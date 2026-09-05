@@ -1,0 +1,6 @@
+{
+  "name": "Perfor Construcciones",
+  "description": "Geotechnical engineering and deep foundation solutions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
