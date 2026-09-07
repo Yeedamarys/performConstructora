@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Phone, MessageCircle, User } from 'lucide-react';
+import logo from '../images/logo.png';
 
 export default function Navbar() {
   const location = useLocation();
@@ -15,9 +16,8 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-brand-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        <Link to="/" className="flex flex-col">
-          <span className="font-display font-bold text-xl leading-tight text-brand-primary">PERFOR<br/>CONSTRUCCIONES</span>
-          <span className="text-[10px] text-brand-muted font-sans font-semibold uppercase tracking-wider">Molina & Villafuerte Cía. Ltda.</span>
+        <Link to="/" className="flex shrink-0 items-center" aria-label="Perfor Construcciones - Inicio">
+          <img src={logo} alt="Perfor Construcciones Molina & Villafuerte Cía. Ltda." className="h-16 w-auto object-contain" />
         </Link>
 
         <nav className="hidden md:flex gap-1 items-center">
@@ -43,7 +43,7 @@ export default function Navbar() {
           </div>
           <a href="#" className="flex items-center gap-2 bg-brand-amber text-white font-display font-semibold text-sm uppercase tracking-wider px-5 py-3 rounded hover:bg-brand-amber-dark transition-all shadow-[0_2px_4px_rgba(42,107,130,0.04)]">
             <MessageCircle size={18} />
-            Cotizar por<br/>WhatsApp
+            Cotizar <br/> 
           </a>
           <button className="w-10 h-10 rounded-full bg-brand-bg flex items-center justify-center text-brand-deep border border-brand-border hover:bg-gray-100">
             <User size={18} />

@@ -23,3 +23,28 @@
     @apply font-display tracking-tight text-brand-text;
   }
 }
+
+@keyframes whatsapp-cta {
+  0%, 15% {
+    opacity: 0;
+    transform: translateX(0.75rem);
+  }
+  25%, 70% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  85%, 100% {
+    opacity: 0;
+    transform: translateX(0.75rem);
+  }
+}
+
+.whatsapp-cta {
+  animation: whatsapp-cta 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-cta {
+    animation: none;
+  }
+}

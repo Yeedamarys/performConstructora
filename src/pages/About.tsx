@@ -26,11 +26,7 @@ export default function About() {
                  <span className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest">Doc-ID: MV-M-2024</span>
               </div>
               <h2 className="font-display font-bold text-2xl text-brand-text mb-6 leading-relaxed">
-                Perfor Construcciones Molina & Villafuerte fue creada con la finalidad de cubrir las necesidades que se presentan en proyectos de construcción de obra civil, aportando experiencia y conocimiento técnico para la resolución de problemas.
-              </h2>
-              <p className="font-sans text-brand-muted mb-12">
-                Somos especialistas en trabajos de perforación, pilotaje y estabilización de suelos, brindando servicio directo a constructoras, consorcios e ingenieros que requieren un subcontratista confiable, técnico y con resultados comprobables en obra.
-              </p>
+             M&V PERFOR CONSTRUCCIONES fue creada para desarrollar y ejecutar proyectos de pilotaje, estabilización de taludes y construcciones de obra civil, satisfaciendo la necesidad de nuestros clientes con soluciones técnicas confiables, innovación y cumplimiento de plazos establecidos. aportando experiencia y conocimiento técnico que generan confianza, valor y bienestar para nuestros clientes, colaboradores y la comunidad, impulsando el crecimiento del país a través  de obras de excelencia.</h2>
             </div>
             
             <div className="grid grid-cols-3 gap-4 border-t border-brand-border pt-8">
