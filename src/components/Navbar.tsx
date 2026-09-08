@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Phone, MessageCircle, User } from 'lucide-react';
-import logo from '../images/logo.png';
+import logoMark from '../images/logo-mark.png';
 
 export default function Navbar() {
   const location = useLocation();
@@ -14,10 +14,35 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-brand-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        <Link to="/" className="flex shrink-0 items-center" aria-label="Perfor Construcciones - Inicio">
-          <img src={logo} alt="Perfor Construcciones Molina & Villafuerte Cía. Ltda." className="h-16 w-auto object-contain" />
+    <header className="sticky top-0 z-50 bg-white border-b border-brand-border shadow-[0_1px_0_rgba(0,103,129,0.06)]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[5.75rem] md:min-h-[6.75rem] py-2.5 flex items-center justify-between gap-4">
+        <Link
+          to="/"
+          className="group flex shrink-0 items-center gap-2.5 sm:gap-3 py-2"
+          aria-label="Perfor Construcciones - Inicio"
+        >
+          <div className="flex h-[3.5rem] w-[5.125rem] shrink-0 items-center sm:h-[4.125rem] sm:w-[5.875rem] md:h-[4.25rem] md:w-[6rem]">
+            <img
+              src={logoMark}
+              alt=""
+              aria-hidden="true"
+              className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+            />
+          </div>
+
+          <div className="flex h-[3.5rem] sm:h-[4.125rem] md:h-[4.25rem] flex-col justify-center gap-1">
+            <div className="flex flex-col leading-[1.15]">
+              <span className="font-display font-medium text-sm sm:text-base md:text-lg uppercase tracking-[0.16em] text-brand-muted">
+                PERFOR
+              </span>
+              <span className="font-display font-medium text-sm sm:text-base md:text-lg uppercase tracking-[0.16em] text-brand-muted">
+                CONSTRUCCIONES
+              </span>
+            </div>
+            <span className="font-display text-[9px] sm:text-[10px] md:text-[11px] font-bold uppercase tracking-[0.18em] text-brand-amber leading-none">
+              SOMOS TU MEJOR OPCIÓN
+            </span>
+          </div>
         </Link>
 
         <nav className="hidden md:flex gap-1 items-center">

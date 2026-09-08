@@ -1,5 +1,6 @@
-import { CheckCircle2, ChevronRight, Award, Shield, FileCheck, Hammer, Activity } from 'lucide-react';
+import { CheckCircle2, Award, Shield, FileCheck, Hammer, Activity, Target, Eye } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import nosotrosImage from '../images/nosotros.png';
 
 export default function About() {
   return (
@@ -23,9 +24,8 @@ export default function About() {
             <div>
               <div className="flex justify-between items-start mb-6">
                  <span className="text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest">Propósito Fundacional</span>
-                 <span className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest">Doc-ID: MV-M-2024</span>
               </div>
-              <h2 className="font-display font-bold text-2xl text-brand-text mb-6 leading-relaxed">
+              <h2 className="font-display font text-[15] text-brand-text mb-6 leading-relaxed">
              M&V PERFOR CONSTRUCCIONES fue creada para desarrollar y ejecutar proyectos de pilotaje, estabilización de taludes y construcciones de obra civil, satisfaciendo la necesidad de nuestros clientes con soluciones técnicas confiables, innovación y cumplimiento de plazos establecidos. aportando experiencia y conocimiento técnico que generan confianza, valor y bienestar para nuestros clientes, colaboradores y la comunidad, impulsando el crecimiento del país a través  de obras de excelencia.</h2>
             </div>
             
@@ -54,20 +54,13 @@ export default function About() {
             </div>
           </div>
           
-          <div className="bg-gray-200 rounded-xl border border-brand-border overflow-hidden relative aspect-square lg:aspect-auto">
-             <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/80 to-transparent flex flex-col justify-end p-8">
-               <div className="bg-white/10 backdrop-blur rounded p-4 border border-white/20">
-                 <div className="flex justify-between items-center mb-2">
-                   <div className="flex items-center gap-2 text-xs font-display font-bold text-white uppercase tracking-widest">
-                     <span className="w-2 h-2 rounded-full bg-brand-primary animate-pulse"></span>
-                     Sondeo Dinámico Activo
-                   </div>
-                   <div className="bg-white text-brand-text text-[10px] px-2 py-1 rounded font-display font-bold uppercase">
-                     Torre CFA 32.5m Prof.
-                   </div>
-                 </div>
-               </div>
-             </div>
+          <div className="rounded-xl border border-brand-border overflow-hidden relative aspect-square lg:aspect-auto min-h-[320px]">
+             <img
+               src={nosotrosImage}
+               alt="Equipo de M&V Perfor Construcciones en obra"
+               className="absolute inset-0 h-full w-full object-cover"
+             />
+             
           </div>
         </div>
         
@@ -77,111 +70,100 @@ export default function About() {
              <Award size={18} className="text-brand-amber" />
              <span className="text-[10px] font-display font-bold uppercase tracking-widest">Estratigrafía Típica de Operación en Suelos Andinos y Costa</span>
            </div>
-           <div className="text-[10px] font-display font-bold uppercase tracking-widest text-brand-primary">
-             CFA / Cargas 180-600 Ton
-           </div>
+          
         </div>
       </section>
 
-      {/* Quote */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div className="bg-brand-deep rounded-xl p-8 md:p-12 relative overflow-hidden shadow-lg border border-brand-primary/20">
-           <div className="absolute top-0 right-0 opacity-10">
-              <svg width="200" height="200" viewBox="0 0 24 24" fill="currentColor"><path d="M14.417 19.333c-2.482 0-4.502-1.954-4.502-4.364 0-2.316 1.89-4.226 4.14-4.35l.36-.002V8.667h1.417v2.443h-.028c1.378.13 2.502 1.258 2.502 2.664v5.56H14.417zm-9.334 0C2.6 19.333.58 17.379.58 14.969c0-2.316 1.89-4.226 4.14-4.35l.36-.002V8.667H6.5v2.443h-.028c1.378.13 2.502 1.258 2.502 2.664v5.56H5.083z"/></svg>
-           </div>
-           <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center justify-between">
-             <div className="flex-1">
-               <h2 className="text-3xl md:text-4xl font-display font-bold text-white leading-tight mb-6">
-                 "Responsabilidad y desempeño logístico en cada proyecto que ejecutamos."
-               </h2>
-               <div className="flex items-center gap-4 text-brand-primary text-xs font-display font-bold uppercase tracking-widest">
-                 <span className="w-8 h-[2px] bg-brand-primary"></span>
-                 Compromiso Molina & Villafuerte
-               </div>
-             </div>
-             <div className="shrink-0">
-               <a href="#" className="inline-flex items-center justify-center gap-2 bg-brand-amber hover:bg-brand-amber-dark text-white font-display font-bold uppercase tracking-wider px-6 py-4 rounded transition-colors shadow-sm">
-                 Protocolo de Ejecución
-               </a>
-             </div>
-           </div>
-        </div>
-      </section>
+      
 
-      {/* Leadership */}
+      {/* Mission & Vision */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="mb-10">
           <div className="inline-flex items-center gap-2 mb-4">
             <span className="w-2 h-2 bg-brand-primary"></span>
-            <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-muted">Cuadro Ejecutivo y Técnico</span>
+            <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-muted">Identidad Corporativa</span>
           </div>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <h2 className="text-3xl font-display font-bold text-brand-text">Liderazgo Directivo</h2>
-            <div className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest text-right">Dirección Técnica y Operativa</div>
+            <h2 className="text-3xl font-display font-bold text-brand-text">Misión y Visión</h2>
+            
           </div>
           <p className="font-sans text-brand-muted mt-4 max-w-2xl">
-            Liderado por profesionales acreditados con trayectoria directa en obras de envergadura nacional, combinando pericia analítica en subsuelo y solvencia logística en frente de trabajo.
+            Nuestros principios fundamentales guían cada proyecto que ejecutamos, definiendo quiénes somos hoy y hacia dónde nos proyectamos como empresa líder en construcción especializada.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-           {/* Leader 1 */}
+           {/* Mission */}
            <div className="bg-white rounded-xl border border-brand-border shadow-sm p-8">
              <div className="flex items-start justify-between mb-8">
                <div className="flex items-center gap-4">
-                 <div className="w-16 h-16 bg-gray-200 rounded-full overflow-hidden border border-brand-border"></div>
+                 <div className="w-16 h-16 bg-brand-bg rounded-full overflow-hidden border border-brand-border flex items-center justify-center text-brand-primary">
+                   <Target size={28} />
+                 </div>
                  <div>
-                   <div className="text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest mb-1">Mando Técnico de Suelos</div>
-                   <h3 className="font-display font-bold text-xl text-brand-text">Jordy Villafuerte</h3>
-                   <div className="text-xs text-brand-muted font-sans mt-1">Gerente Técnico de Proyecto</div>
+                   <div className="text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest mb-1">Propósito Corporativo</div>
+                   <h3 className="font-display font-bold text-xl text-brand-text">Misión</h3>
+                   <div className="text-xs text-brand-muted font-sans mt-1">M&V Perfor Construcciones</div>
                  </div>
                </div>
                <div className="w-8 h-8 rounded bg-brand-bg flex items-center justify-center text-brand-primary border border-brand-border">
-                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                 <Award size={16} />
                </div>
              </div>
              <div className="bg-brand-bg rounded p-6 border border-brand-border mb-6">
-               <div className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest mb-2">Áreas de Dominio Ingenieril</div>
-               <p className="font-sans text-sm text-brand-text font-semibold mb-2">Especialista en Geotecnia, Pilotaje y Perforación profunda.</p>
-               <p className="font-sans text-sm text-brand-muted">Supervisión directa de modelación de suelo, verificación de capacidad portante in situ, cálculo y dirección de muros anclados en excavaciones de gran altura.</p>
+               <div className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest mb-2">Nuestro Compromiso</div>
+               <p className="font-sans text-sm text-brand-text font-semibold mb-3">
+                 En M&V Perfor Construcciones brindamos soluciones especializadas en pilotaje, estabilización de taludes y construcciones de obra civil, ejecutando cada proyecto con calidad, seguridad y responsabilidad.
+               </p>
+               <p className="font-sans text-sm text-brand-muted">
+                 Comprometidos en satisfacer las necesidades de nuestros clientes, contamos con un grupo capacitado, maquinaria especializada en el área de ejecución y experiencia para cumplir con los plazos establecidos.
+               </p>
              </div>
              <div className="flex flex-wrap gap-2 mb-6">
-               <span className="bg-white border border-brand-border text-brand-muted text-[10px] px-3 py-1.5 rounded font-display font-bold uppercase">CFA & Kelly Bar</span>
-               <span className="bg-white border border-brand-border text-brand-muted text-[10px] px-3 py-1.5 rounded font-display font-bold uppercase">Análisis Sísmico NEC</span>
+               <span className="bg-white border border-brand-border text-brand-muted text-[10px] px-3 py-1.5 rounded font-display font-bold uppercase">Calidad</span>
+               <span className="bg-white border border-brand-border text-brand-muted text-[10px] px-3 py-1.5 rounded font-display font-bold uppercase">Seguridad</span>
+               <span className="bg-white border border-brand-border text-brand-muted text-[10px] px-3 py-1.5 rounded font-display font-bold uppercase">Responsabilidad</span>
              </div>
              <div className="flex items-center justify-between border-t border-brand-border pt-4">
-               <span className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest">Colegio de Ingenieros Civiles del Ecuador</span>
-               <span className="flex items-center gap-1 text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest"><CheckCircle2 size={12} /> Acreditación Profesional</span>
+               <span className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest">Grupo Capacitado & Maquinaria Especializada</span>
+               <span className="flex items-center gap-1 text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest"><CheckCircle2 size={12} /> Cumplimiento de Plazos</span>
              </div>
            </div>
 
-           {/* Leader 2 */}
+           {/* Vision */}
            <div className="bg-white rounded-xl border border-brand-border shadow-sm p-8">
              <div className="flex items-start justify-between mb-8">
                <div className="flex items-center gap-4">
-                 <div className="w-16 h-16 bg-gray-200 rounded-full overflow-hidden border border-brand-border"></div>
+                 <div className="w-16 h-16 bg-brand-bg rounded-full overflow-hidden border border-brand-border flex items-center justify-center text-brand-primary">
+                   <Eye size={28} />
+                 </div>
                  <div>
-                   <div className="text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest mb-1">Dirección General y Operaciones</div>
-                   <h3 className="font-display font-bold text-xl text-brand-text">Kleber Daniel Molina Figueroa</h3>
-                   <div className="text-xs text-brand-muted font-sans mt-1">Gerente General de Proyecto</div>
+                   <div className="text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest mb-1">Proyección Estratégica</div>
+                   <h3 className="font-display font-bold text-xl text-brand-text">Visión</h3>
+                   <div className="text-xs text-brand-muted font-sans mt-1">Horizonte 2030</div>
                  </div>
                </div>
                <div className="w-8 h-8 rounded bg-brand-bg flex items-center justify-center text-brand-primary border border-brand-border">
-                 <FileCheck size={16} />
+                 <Shield size={16} />
                </div>
              </div>
              <div className="bg-brand-bg rounded p-6 border border-brand-border mb-6">
-               <div className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest mb-2">Áreas de Dominio Operativo</div>
-               <p className="font-sans text-sm text-brand-text font-semibold mb-2">Gestión Estratégica. Cadena de Suministro y Logística de Obra.</p>
-               <p className="font-sans text-sm text-brand-muted">Control y optimización de frentes de maquinaria pesada, suministro oportuno de hormigones y acero de anclaje, garantizando cumplimiento de hitos contractuales.</p>
+               <div className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest mb-2">Nuestra Meta</div>
+               <p className="font-sans text-sm text-brand-text font-semibold mb-3">
+                 Ser una empresa líder y reconocida a nivel nacional en el sector de la construcción especializada en pilotaje, estabilización de taludes y construcciones de obra civil, destacándonos por la excelencia técnica, innovación, seguridad y confianza de nuestros clientes.
+               </p>
+               <p className="font-sans text-sm text-brand-muted">
+                 Buscamos un crecimiento sostenible que nos permita participar en los principales proyectos de infraestructura del país, generando valor para nuestros colaboradores y clientes.
+               </p>
              </div>
              <div className="flex flex-wrap gap-2 mb-6">
-               <span className="bg-white border border-brand-border text-brand-muted text-[10px] px-3 py-1.5 rounded font-display font-bold uppercase">Logística Pesada</span>
-               <span className="bg-white border border-brand-border text-brand-muted text-[10px] px-3 py-1.5 rounded font-display font-bold uppercase">Gestión Contractual FIDIC</span>
+               <span className="bg-white border border-brand-border text-brand-muted text-[10px] px-3 py-1.5 rounded font-display font-bold uppercase">Excelencia Técnica</span>
+               <span className="bg-white border border-brand-border text-brand-muted text-[10px] px-3 py-1.5 rounded font-display font-bold uppercase">Innovación</span>
+               <span className="bg-white border border-brand-border text-brand-muted text-[10px] px-3 py-1.5 rounded font-display font-bold uppercase">Confianza</span>
              </div>
              <div className="flex items-center justify-between border-t border-brand-border pt-4">
-               <span className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest">Administración y Contratos Civiles</span>
-               <span className="flex items-center gap-1 text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest"><CheckCircle2 size={12} /> Garantía de Suministro</span>
+               <span className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest">Liderazgo Nacional en Construcción Especializada</span>
+               <span className="flex items-center gap-1 text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest"><CheckCircle2 size={12} /> Crecimiento Sostenible</span>
              </div>
            </div>
         </div>
@@ -257,24 +239,7 @@ export default function About() {
       </section>
       
       {/* Footer Banner CTA */}
-      <section className="bg-brand-border py-8 border-t border-brand-border">
-         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-           <div className="flex items-center gap-4">
-             <div className="w-12 h-12 bg-brand-primary rounded flex items-center justify-center text-white shrink-0">
-                <FileCheck size={24} />
-             </div>
-             <div>
-               <h3 className="font-display font-bold text-brand-text">¿Necesita incorporar un subcontratista geotécnico a su licitación?</h3>
-               <p className="font-sans text-sm text-brand-muted">Revisión inmediata de memorias de cálculo, curvas granulométricas y sondeos SPT en menos de 24 horas laborables.</p>
-             </div>
-           </div>
-           <div className="flex gap-4 shrink-0">
-             <Link to="/contacto" className="bg-brand-deep hover:bg-brand-primary text-white font-display font-bold uppercase tracking-wider text-xs px-6 py-3 rounded transition-colors flex items-center gap-2">
-               Coordinar Visita Técnica
-             </Link>
-           </div>
-         </div>
-      </section>
+      
     </div>
   );
 }
