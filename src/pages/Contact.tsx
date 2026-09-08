@@ -141,7 +141,7 @@ export default function Contact() {
 
               {/* HQ Info */}
               <div className="bg-white rounded-xl border border-brand-border p-6 shadow-sm">
-                 <h3 className="font-display font-bold text-lg text-brand-text mb-6">Sede Matriz Nacional</h3>
+                 <h3 className="font-display font-bold text-lg text-brand-text mb-6">Sede Matriz</h3>
                  
                  <div className="space-y-6">
                    <div className="flex gap-4">
@@ -149,9 +149,9 @@ export default function Contact() {
                        <MapPin size={18} className="text-brand-primary" />
                      </div>
                      <div>
-                        <span className="font-display font-bold text-brand-muted opacity-50 uppercase tracking-widest text-sm">Mapa Base Operativa</span>
-                        <p className="font-sans text-sm text-brand-text font-semibold mt-1">Parque Industrial Geotécnico, Sector La Floresta Sur.</p>
-                        <p className="font-sans text-sm text-brand-muted mt-1">Av. República del Salvador y Naciones Unidas, Edificio Titanium, Piso 7, Quito - Ecuador.</p>
+                        <span className="font-display font-bold text-brand-muted opacity-50 uppercase tracking-widest text-sm">Ubicación</span>
+                        <p className="font-sans text-sm text-brand-text font-semibold mt-1">Sector Solanda.</p>
+                        <p className="font-sans text-sm text-brand-muted mt-1">Cusumasa & Avenida Teniente Hugo Ortiz</p>
                      </div>
                    </div>
                    
@@ -162,19 +162,23 @@ export default function Contact() {
                      <div>
                         <span className="font-display font-bold text-brand-muted opacity-50 uppercase tracking-widest text-sm">Contactos Directos</span>
                         <p className="font-sans text-sm text-brand-muted mt-1 flex flex-col gap-1">
-                          <span className="text-brand-text font-semibold flex justify-between"><span>PBX Corporativo:</span> (+593) 2 299-8700</span>
-                          <span className="text-brand-text font-semibold flex justify-between"><span>Ingeniería:</span> (+593) 99 876 5432</span>
+                          <span className="text-brand-text font-semibold flex justify-between"><span>Teléfono:</span> (+593) 95 956 4486</span>
+                          <span className="text-brand-text font-semibold flex justify-between"><span>Email:</span> info@performconstructora.com</span>
                         </p>
                      </div>
                    </div>
                  </div>
 
                  <div className="mt-8 pt-6 border-t border-brand-border">
-                    <div className="aspect-[4/3] bg-gray-200 rounded relative overflow-hidden">
-                       <div className="absolute inset-0 bg-brand-deep/10"></div>
-                       <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-full border border-brand-border flex items-center gap-2 text-[10px] font-display font-bold text-brand-text uppercase tracking-widest shadow-sm">
-                         <span className="w-1.5 h-1.5 rounded-full bg-brand-success"></span> Operaciones Centrales
-                       </div>
+                    <div className="aspect-[4/3] rounded overflow-hidden border border-brand-border">
+                      <iframe
+                        title="Ubicación de Operaciones Centrales"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4909.29402520863!2d-78.53447322417767!3d-0.2655708353640596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d598faad2727ad%3A0x85a09a8b9f864b29!2sCusumasa%20%26%20Avenida%20Teniente%20Hugo%20Ortiz%2C%20170148%20Quito!5e1!3m2!1ses!2sec!4v1788878221798!5m2!1ses!2sec"
+                        className="w-full h-full border-0"
+                        loading="lazy"
+                        allowFullScreen
+                        referrerPolicy="strict-origin-when-cross-origin"
+                      />
                     </div>
                  </div>
               </div>

@@ -1,51 +1,79 @@
-import { Download, MapPin, CheckCircle, ArrowRight, ShieldCheck } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Download, ImageIcon, ShieldCheck, X } from 'lucide-react';
+import projectOnePhoto from '../images/p1f1.png';
+import projectTwoPhotoOne from '../images/p2f1.jpg';
+import projectTwoPhotoTwo from '../images/p2f2.jpg';
 
 export default function Projects() {
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
   const projects = [
     {
-      title: "Mitigación de riesgos y conducción de aguas lluvias – Museo Yaku",
-      location: "Quito Centro",
-      service: "Drenaje & Shotcrete",
-      client: "Superintendencia de Obra",
-      desc: "Perforación para anclajes con hormigón proyectado y control integral de drenaje en ladera de alta pendiente, precautelando patrimonio urbano y geotécnico."
+      title: "Museo Yaku — Perforación y anclaje en talud",
+      service: "Anclajes en talud",
+      client: "Ing. Eduardo Lazcano",
+      year: "Agosto 2023",
+      desc: "Perforación y anclaje en talud del Museo Yaku."
     },
     {
-      title: "Protección de taludes y puente peatonal",
-      location: "Pichincha",
-      service: "Pilotaje Prebarrenado",
-      client: "Consorcio Talud y Puente",
-      desc: "Pilotaje prebarrenado con tubería de recubrimiento perimetral para contención de estribos y estabilización sísmica del paso peatonal interconectado."
+      title: "Puente vehicular sobre el río Monjas — Sector Pomasqui",
+      service: "Pilotaje Ø 0.80 m",
+      client: "Ing. Luis Urgiles",
+      year: "Diciembre 2024",
+      desc: "Pilotaje de Ø 0.80 m a 12 m de profundidad con camisa perdida."
     },
     {
-      title: "Puente Majua de 50 metros de Luz",
-      location: "Costa / Esmeraldas",
-      service: "Hincado Ø 35cm",
-      client: "Abicer Constructora Cía. Ltda.",
-      desc: "Pilotes hincados con tubería de acero Ø 35cm a 12m de profundidad en lecho de arrastre aluvial y estratos de socavación activa fluvial."
+      title: "Proyecto Orquídeas — Mitigación de riesgo río Monjas",
+      service: "Estabilización de taludes",
+      client: "Consorcio Gaviones Quito",
+      team: "Ing. Marco Peralta · Ing. Carlos Sánchez · Ing. Steve Burgos",
+      year: "2025–2026",
+      desc: "Estabilización de taludes para la mitigación de riesgo en el río Monjas."
     },
     {
-      title: "Puente vehicular sobre el Río Monjas",
-      location: "Pomasqui",
-      service: "Tubería Ø 0.75m",
-      client: "Consorcio Monjas",
-      desc: "Pilotes con prebarrenado y técnica de vibrohincado profundo, tubería Ø 0.75m, alcanzando 12 metros de penetración en quebrada de alta erosión."
+      title: "Proyecto Orquídeas — Protección del río Machángara",
+      service: "Anclajes y geomanto",
+      client: "Ing. Francisco Vaca",
+      year: "Septiembre 2025",
+      desc: "Anclajes y colocación de geomanto con malla de triple torsión."
     },
     {
-      title: "Puente Sector Puente 8 – Autopista Gral. Rumiñahui",
-      location: "Valle Chillos",
-      service: "Prof. 20 Metros",
-      client: "Ing. Jorge Castillo A.",
-      desc: "Pilotes prebarrenados Ø 0.60m - 0.80m alcanzando 20m en estrato vulcanosedimentario denso para soportar tráfico pesado intercantonal continuo."
+      title: "Construcción de hospital privado — Loja",
+      service: "Micropilotaje Ø 0.38 m",
+      client: "Ing. Salomón Rosero",
+      year: "Junio 2026",
+      desc: "Micropilotaje de Ø 0.38 m a 18 m de profundidad con camisa perdida."
     },
     {
-      title: "Estabilización de taludes – Chillogallo y La Argelia",
-      location: "Quito Sur",
-      service: "Anclajes & Shotcrete",
-      client: "Ing. Byron Suquillo L.",
-      desc: "Perforación e inyección de lechada controlada para anclajes pasivos y activos con doble capa de shotcrete armado con fibras estructurales."
+      title: "Protección de talud en río Monjas — Sector La Pampa",
+      service: "Tubería hincada Ø 0.30 m",
+      client: "Ing. Francisco Vaca",
+      year: "Mayo 2025",
+      desc: "Tubería hincada de Ø 0.30 m a 8 m de profundidad."
+    },
+    {
+      title: "Puente vehicular de Majua — Cantón Viche",
+      service: "Tubería hincada Ø 0.30 m",
+      client: "Ing. Abigail Cedeño",
+      year: "Marzo 2024",
+      desc: "Tubería hincada de Ø 0.30 m a 12 m de profundidad."
+    },
+    {
+      title: "Cimentación para el proyecto Acua Shops",
+      service: "Pilotaje Ø 0.80 m",
+      client: "IFCE Cimentaciones Ecuador",
+      year: "Julio 2026",
+      desc: "Pilotaje de Ø 0.80 m a 23 m de profundidad para la cimentación del proyecto."
     }
   ];
+
+  useEffect(() => {
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setSelectedImage(null);
+    };
+
+    window.addEventListener('keydown', closeOnEscape);
+    return () => window.removeEventListener('keydown', closeOnEscape);
+  }, []);
 
   return (
     <div className="bg-brand-bg w-full">
@@ -62,9 +90,7 @@ export default function Projects() {
               Cada proyecto que ejecutamos cuenta con certificación oficial y acta de entrega-recepción de nuestros clientes. Obras de infraestructura vial, urbana e hidroeléctrica en todo el Ecuador.
             </p>
           </div>
-          <button className="flex items-center gap-2 bg-brand-deep hover:bg-brand-primary text-white font-display font-bold uppercase tracking-wider px-6 py-4 rounded transition-colors shadow-sm shrink-0">
-            <Download size={18} /> Solicitar Dossier Completo
-          </button>
+          
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
@@ -87,7 +113,7 @@ export default function Projects() {
         </div>
 
         <div className="flex flex-wrap gap-2 mb-8 border-b border-brand-border pb-6">
-          <button className="bg-brand-primary text-white font-display font-bold text-[10px] uppercase tracking-widest px-4 py-2 rounded-full">Todos (6)</button>
+          <button className="bg-brand-primary text-white font-display font-bold text-[10px] uppercase tracking-widest px-4 py-2 rounded-full">Todos (8)</button>
           <button className="bg-white border border-brand-border text-brand-muted hover:text-brand-text font-display font-bold text-[10px] uppercase tracking-widest px-4 py-2 rounded-full transition-colors">Pilotaje y Cimentación</button>
           <button className="bg-white border border-brand-border text-brand-muted hover:text-brand-text font-display font-bold text-[10px] uppercase tracking-widest px-4 py-2 rounded-full transition-colors">Estabilización de Taludes</button>
           <button className="bg-white border border-brand-border text-brand-muted hover:text-brand-text font-display font-bold text-[10px] uppercase tracking-widest px-4 py-2 rounded-full transition-colors">Puentes & Viales</button>
@@ -96,41 +122,108 @@ export default function Projects() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((p, i) => (
             <div key={i} className="bg-white rounded-xl border border-brand-border overflow-hidden hover:shadow-md transition-all group">
-              <div className="aspect-[4/3] bg-gray-200 relative">
-                 <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-display font-bold text-brand-text uppercase tracking-widest flex items-center gap-1 shadow-sm">
-                   <ShieldCheck size={12} className="text-brand-primary" /> Trabajo Certificado
-                 </div>
-                 <div className="absolute bottom-4 left-4 flex gap-2">
-                   <span className="bg-white text-brand-text text-[10px] font-display font-bold px-2 py-1 uppercase tracking-widest rounded shadow-sm">{p.location}</span>
-                   <span className="bg-brand-primary text-white text-[10px] font-display font-bold px-2 py-1 uppercase tracking-widest rounded shadow-sm">{p.service}</span>
-                 </div>
+              <div className="grid grid-cols-2 gap-px bg-brand-border">
+                {i === 0 ? (
+                  <button
+                    type="button"
+                    onClick={() => setSelectedImage({ src: projectOnePhoto, alt: `Proyecto 1: ${p.title}` })}
+                    className="aspect-square bg-brand-bg overflow-hidden cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-primary"
+                    aria-label="Ampliar imagen del proyecto 1"
+                  >
+                    <img
+                      src={projectOnePhoto}
+                      alt={`Proyecto 1: ${p.title}`}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    />
+                  </button>
+                ) : i === 1 ? (
+                  <button
+                    type="button"
+                    onClick={() => setSelectedImage({ src: projectTwoPhotoOne, alt: `Proyecto 2: ${p.title}, foto 1` })}
+                    className="aspect-square bg-brand-bg overflow-hidden cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-primary"
+                    aria-label="Ampliar primera imagen del proyecto 2"
+                  >
+                    <img
+                      src={projectTwoPhotoOne}
+                      alt={`Proyecto 2: ${p.title}, foto 1`}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    />
+                  </button>
+                ) : (
+                  <div className="aspect-square bg-brand-bg flex flex-col items-center justify-center gap-2 p-3 text-center text-brand-muted">
+                    <ImageIcon size={24} strokeWidth={1.5} />
+                    <span className="font-display font-bold text-[9px] uppercase tracking-widest">Espacio para foto 1</span>
+                  </div>
+                )}
+                {i === 1 ? (
+                  <button
+                    type="button"
+                    onClick={() => setSelectedImage({ src: projectTwoPhotoTwo, alt: `Proyecto 2: ${p.title}, foto 2` })}
+                    className="aspect-square bg-brand-bg overflow-hidden cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-primary"
+                    aria-label="Ampliar segunda imagen del proyecto 2"
+                  >
+                    <img
+                      src={projectTwoPhotoTwo}
+                      alt={`Proyecto 2: ${p.title}, foto 2`}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    />
+                  </button>
+                ) : (
+                  <div className="aspect-square bg-brand-bg flex flex-col items-center justify-center gap-2 p-3 text-center text-brand-muted">
+                    <ImageIcon size={24} strokeWidth={1.5} />
+                    <span className="font-display font-bold text-[9px] uppercase tracking-widest">Espacio para foto 2</span>
+                  </div>
+                )}
               </div>
               <div className="p-6">
-                <h3 className="font-display font-bold text-lg text-brand-text mb-4 min-h-[56px] leading-snug">{p.title}</h3>
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <span className="bg-brand-primary text-white text-[10px] font-display font-bold px-2 py-1 uppercase tracking-widest rounded">Proyecto {i + 1}</span>
+                  <span className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest text-right">{p.year}</span>
+                </div>
+                <h3 className="font-display font-bold text-lg text-brand-text mb-4 leading-snug">{p.title}</h3>
                 <div className="bg-brand-bg rounded p-3 border border-brand-border mb-4">
-                  <div className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest mb-1">Mandante Oficial:</div>
+                  <div className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest mb-1">Responsable / Cliente:</div>
                   <div className="font-sans font-semibold text-sm text-brand-text">{p.client}</div>
+                  {p.team && <div className="font-sans text-xs text-brand-muted mt-2 leading-relaxed">{p.team}</div>}
                 </div>
-                <p className="font-sans text-sm text-brand-muted mb-6 min-h-[80px]">{p.desc}</p>
-                <div className="flex items-center justify-between border-t border-brand-border pt-4">
-                  <span className="flex items-center gap-1 text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest">
-                    <CheckCircle size={12} className="text-brand-success" /> Acta Definitiva #{1419 + i}
-                  </span>
-                  <Link to="#" className="flex items-center gap-1 text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest group-hover:text-brand-deep transition-colors">
-                    Ficha Técnica <ArrowRight size={12} />
-                  </Link>
-                </div>
+                <p className="font-sans text-sm text-brand-muted">{p.desc}</p>
               </div>
             </div>
           ))}
         </div>
       </section>
 
+      {selectedImage !== null && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 sm:p-8"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Imagen ampliada del proyecto"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="relative max-h-full max-w-5xl" onClick={(event) => event.stopPropagation()}>
+            <img
+              src={selectedImage.src}
+              alt={selectedImage.alt}
+              className="max-h-[85vh] w-auto max-w-full rounded-lg object-contain shadow-2xl"
+            />
+            <button
+              type="button"
+              onClick={() => setSelectedImage(null)}
+              className="absolute -right-3 -top-3 flex h-10 w-10 items-center justify-center rounded-full bg-white text-brand-text shadow-lg transition-colors hover:bg-brand-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
+              aria-label="Cerrar imagen ampliada"
+            >
+              <X size={20} />
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Trust Section */}
       <section className="bg-brand-deep text-white py-16 text-center">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ShieldCheck size={48} className="mx-auto text-brand-primary mb-6" />
-          <div className="text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest mb-4">Criterios de Calidad Innegociables</div>
+          <ShieldCheck size={48} className="mx-auto #fff mb-6" />
+          <div className="text-[10px] font-display font-bold #fff uppercase tracking-widest mb-4">Criterios de Calidad Innegociables</div>
           <h2 className="text-3xl font-display font-bold mb-6">GARANTÍA GEOTÉCNICA CERTIFICADA</h2>
           <p className="font-sans text-white/80">
             Nuestro rigor operativo no depende de promesas; se fundamenta en normativas internacionales, pruebas sónicas in situ y actas suscritas por fiscalizadores certificados.

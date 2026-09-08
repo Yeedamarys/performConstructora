@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Space Grotesk", sans-serif;
-  --font-sans: "Manrope", sans-serif;
+  --font-display: sans-serif;
+  --font-sans: sans-serif;
 
   --color-brand-primary: #006781;
   --color-brand-deep: #004d62;
@@ -25,22 +25,23 @@
 }
 
 @keyframes whatsapp-cta {
-  0%, 15% {
+  0%, 12% {
     opacity: 0;
-    transform: translateX(0.75rem);
+    transform: translateX(1rem) scale(0.96);
   }
-  25%, 70% {
+  22%, 72% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
   }
-  85%, 100% {
+  88%, 100% {
     opacity: 0;
-    transform: translateX(0.75rem);
+    transform: translateX(1rem) scale(0.96);
   }
 }
 
 .whatsapp-cta {
-  animation: whatsapp-cta 4s ease-in-out infinite;
+  animation: whatsapp-cta 5s ease-in-out infinite;
+  will-change: opacity, transform;
 }
 
 @media (prefers-reduced-motion: reduce) {

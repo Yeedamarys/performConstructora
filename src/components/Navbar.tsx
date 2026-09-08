@@ -62,9 +62,9 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-4">
-          <div className="flex items-center gap-2 px-3 py-1.5 bg-brand-bg rounded border border-brand-border text-brand-deep">
+          <div className="flex items-center gap-2 whitespace-nowrap px-4 py-2 bg-brand-bg rounded border border-brand-border text-brand-deep">
             <Phone size={16} />
-            <span className="font-sans font-semibold text-sm">(+593) 2<br/>299-8700</span>
+            <span className="font-sans font-semibold text-sm">(+593) 95 956 4486</span>
           </div>
           <a href="#" className="flex items-center gap-2 bg-brand-amber text-white font-display font-semibold text-sm uppercase tracking-wider px-5 py-3 rounded hover:bg-brand-amber-dark transition-all shadow-[0_2px_4px_rgba(42,107,130,0.04)]">
             <MessageCircle size={18} />
