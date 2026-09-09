@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 const pages: Record<string, { title: string; description: string; keywords: string }> = {
   '/': {
-    title: 'PERFORCONSTRUCCIONES | Ingeniería geotécnica y pilotaje en Ecuador',
+    title: 'Perfor Construcciones',
     description: 'PERFORCONSTRUCCIONES ofrece pilotaje barrenado y prebarrenado, hincado de pilotes, anclajes para muros pantalla y estabilización de taludes en Ecuador.',
     keywords: 'PERFORCONSTRUCCIONES, ingeniería geotécnica Ecuador, pilotaje, pilotaje barrenado, pilotaje prebarrenado, hincado de pilotes, vibrohincado, anclajes, estabilización de taludes',
   },
