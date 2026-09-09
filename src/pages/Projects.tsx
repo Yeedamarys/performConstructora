@@ -1,8 +1,22 @@
 import { useEffect, useState } from 'react';
 import { Download, ImageIcon, ShieldCheck, X } from 'lucide-react';
-import projectOnePhoto from '../images/p1f1.png';
-import projectTwoPhotoOne from '../images/p2f1.jpg';
-import projectTwoPhotoTwo from '../images/p2f2.jpg';
+const getImg = (name: string) => `https://res.cloudinary.com/ddegmlh4o/image/upload/f_auto,q_auto/${name}`;
+
+const p1f1 = getImg('p1f1.png');
+const p2f1 = getImg('p2f1.jpg');
+const p2f2 = getImg('p2f2.png');
+const p3f1 = getImg('p3f1.png');
+const p3f2 = getImg('p3f2.png');
+const p4f1 = getImg('p4f1.png');
+const p4f2 = getImg('p4f2.png');
+const p5f1 = getImg('p5f1.png');
+const p5f2 = getImg('p5f2.png');
+const p6f1 = getImg('p6f1.png');
+const p6f2 = getImg('p6f2.png');
+const p7f1 = getImg('p7f1.png');
+const p7f2 = getImg('p7f2.png');
+const p8f1 = getImg('p8f1.png');
+const p8f2 = getImg('p8f2.png');
 
 export default function Projects() {
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
@@ -12,14 +26,16 @@ export default function Projects() {
       service: "Anclajes en talud",
       client: "Ing. Eduardo Lazcano",
       year: "Agosto 2023",
-      desc: "Perforación y anclaje en talud del Museo Yaku."
+      desc: "Perforación y anclaje en talud del Museo Yaku.",
+      images: [p1f1]
     },
     {
       title: "Puente vehicular sobre el río Monjas — Sector Pomasqui",
       service: "Pilotaje Ø 0.80 m",
       client: "Ing. Luis Urgiles",
       year: "Diciembre 2024",
-      desc: "Pilotaje de Ø 0.80 m a 12 m de profundidad con camisa perdida."
+      desc: "Pilotaje de Ø 0.80 m a 12 m de profundidad con camisa perdida.",
+      images: [p2f1, p2f2]
     },
     {
       title: "Proyecto Orquídeas — Mitigación de riesgo río Monjas",
@@ -27,42 +43,48 @@ export default function Projects() {
       client: "Consorcio Gaviones Quito",
       team: "Ing. Marco Peralta · Ing. Carlos Sánchez · Ing. Steve Burgos",
       year: "2025–2026",
-      desc: "Estabilización de taludes para la mitigación de riesgo en el río Monjas."
+      desc: "Estabilización de taludes para la mitigación de riesgo en el río Monjas.",
+      images: [p3f1, p3f2]
     },
     {
       title: "Proyecto Orquídeas — Protección del río Machángara",
       service: "Anclajes y geomanto",
       client: "Ing. Francisco Vaca",
       year: "Septiembre 2025",
-      desc: "Anclajes y colocación de geomanto con malla de triple torsión."
+      desc: "Anclajes y colocación de geomanto con malla de triple torsión.",
+      images: [p4f1, p4f2]
     },
     {
       title: "Construcción de hospital privado — Loja",
       service: "Micropilotaje Ø 0.38 m",
       client: "Ing. Salomón Rosero",
       year: "Junio 2026",
-      desc: "Micropilotaje de Ø 0.38 m a 18 m de profundidad con camisa perdida."
+      desc: "Micropilotaje de Ø 0.38 m a 18 m de profundidad con camisa perdida.",
+      images: [p5f1, p5f2]
     },
     {
       title: "Protección de talud en río Monjas — Sector La Pampa",
       service: "Tubería hincada Ø 0.30 m",
       client: "Ing. Francisco Vaca",
       year: "Mayo 2025",
-      desc: "Tubería hincada de Ø 0.30 m a 8 m de profundidad."
+      desc: "Tubería hincada de Ø 0.30 m a 8 m de profundidad.",
+      images: [p6f1, p6f2]
     },
     {
       title: "Puente vehicular de Majua — Cantón Viche",
       service: "Tubería hincada Ø 0.30 m",
       client: "Ing. Abigail Cedeño",
       year: "Marzo 2024",
-      desc: "Tubería hincada de Ø 0.30 m a 12 m de profundidad."
+      desc: "Tubería hincada de Ø 0.30 m a 12 m de profundidad.",
+      images: [p7f1, p7f2]
     },
     {
       title: "Cimentación para el proyecto Acua Shops",
       service: "Pilotaje Ø 0.80 m",
       client: "IFCE Cimentaciones Ecuador",
       year: "Julio 2026",
-      desc: "Pilotaje de Ø 0.80 m a 23 m de profundidad para la cimentación del proyecto."
+      desc: "Pilotaje de Ø 0.80 m a 23 m de profundidad para la cimentación del proyecto.",
+      images: [p8f1, p8f2]
     }
   ];
 
@@ -123,29 +145,16 @@ export default function Projects() {
           {projects.map((p, i) => (
             <div key={i} className="bg-white rounded-xl border border-brand-border overflow-hidden hover:shadow-md transition-all group">
               <div className="grid grid-cols-2 gap-px bg-brand-border">
-                {i === 0 ? (
+                {p.images && p.images[0] ? (
                   <button
                     type="button"
-                    onClick={() => setSelectedImage({ src: projectOnePhoto, alt: `Proyecto 1: ${p.title}` })}
+                    onClick={() => setSelectedImage({ src: p.images[0], alt: `Proyecto ${i + 1}: ${p.title}, foto 1` })}
                     className="aspect-square bg-brand-bg overflow-hidden cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-primary"
-                    aria-label="Ampliar imagen del proyecto 1"
+                    aria-label={`Ampliar primera imagen del proyecto ${i + 1}`}
                   >
                     <img
-                      src={projectOnePhoto}
-                      alt={`Proyecto 1: ${p.title}`}
-                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                    />
-                  </button>
-                ) : i === 1 ? (
-                  <button
-                    type="button"
-                    onClick={() => setSelectedImage({ src: projectTwoPhotoOne, alt: `Proyecto 2: ${p.title}, foto 1` })}
-                    className="aspect-square bg-brand-bg overflow-hidden cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-primary"
-                    aria-label="Ampliar primera imagen del proyecto 2"
-                  >
-                    <img
-                      src={projectTwoPhotoOne}
-                      alt={`Proyecto 2: ${p.title}, foto 1`}
+                      src={p.images[0]}
+                      alt={`Proyecto ${i + 1}: ${p.title}, foto 1`}
                       className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                     />
                   </button>
@@ -155,16 +164,16 @@ export default function Projects() {
                     <span className="font-display font-bold text-[9px] uppercase tracking-widest">Espacio para foto 1</span>
                   </div>
                 )}
-                {i === 1 ? (
+                {p.images && p.images[1] ? (
                   <button
                     type="button"
-                    onClick={() => setSelectedImage({ src: projectTwoPhotoTwo, alt: `Proyecto 2: ${p.title}, foto 2` })}
+                    onClick={() => setSelectedImage({ src: p.images[1], alt: `Proyecto ${i + 1}: ${p.title}, foto 2` })}
                     className="aspect-square bg-brand-bg overflow-hidden cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-primary"
-                    aria-label="Ampliar segunda imagen del proyecto 2"
+                    aria-label={`Ampliar segunda imagen del proyecto ${i + 1}`}
                   >
                     <img
-                      src={projectTwoPhotoTwo}
-                      alt={`Proyecto 2: ${p.title}, foto 2`}
+                      src={p.images[1]}
+                      alt={`Proyecto ${i + 1}: ${p.title}, foto 2`}
                       className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                     />
                   </button>

@@ -1,6 +1,39 @@
-import { FileText, User, Mail, Phone, MapPin, AlignLeft, Send, ShieldCheck, Zap, MessageCircle } from 'lucide-react';
+import { useState } from 'react';
+import { FileText, User, Mail, Phone, MapPin, AlignLeft, Send, ShieldCheck, Zap, MessageCircle, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 
 export default function Contact() {
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('loading');
+    
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/administracion199@perforconstrucciones.com", {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        setStatus('success');
+        form.reset();
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 5000);
+      }
+    } catch (error) {
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
+  };
+
   return (
     <div className="bg-brand-bg w-full">
       {/* Page Header */}
@@ -32,19 +65,22 @@ export default function Contact() {
                </div>
              </div>
              
-             <form className="space-y-6">
+             <form onSubmit={handleSubmit} className="space-y-6">
+                <input type="hidden" name="_subject" value="Nuevo requerimiento geotécnico desde la web" />
+                <input type="hidden" name="_template" value="table" />
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="flex items-center gap-2 text-xs font-display font-bold text-brand-muted uppercase tracking-widest">
                       <User size={14} className="text-brand-primary" /> Nombre / Razón Social
                     </label>
-                    <input type="text" className="w-full bg-brand-bg border border-brand-border rounded px-4 py-3 font-sans text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all" placeholder="Ej. Constructora Andina S.A." />
+                    <input type="text" name="nombre" required className="w-full bg-brand-bg border border-brand-border rounded px-4 py-3 font-sans text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all" placeholder="Ej. Constructora Andina S.A." />
                   </div>
                   <div className="space-y-2">
                     <label className="flex items-center gap-2 text-xs font-display font-bold text-brand-muted uppercase tracking-widest">
                       <Mail size={14} className="text-brand-primary" /> Correo Corporativo
                     </label>
-                    <input type="email" className="w-full bg-brand-bg border border-brand-border rounded px-4 py-3 font-sans text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all" placeholder="ingenieria@empresa.com" />
+                    <input type="email" name="email" required className="w-full bg-brand-bg border border-brand-border rounded px-4 py-3 font-sans text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all" placeholder="ingenieria@empresa.com" />
                   </div>
                 </div>
 
@@ -53,13 +89,13 @@ export default function Contact() {
                     <label className="flex items-center gap-2 text-xs font-display font-bold text-brand-muted uppercase tracking-widest">
                       <Phone size={14} className="text-brand-primary" /> Teléfono Directo
                     </label>
-                    <input type="tel" className="w-full bg-brand-bg border border-brand-border rounded px-4 py-3 font-sans text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all" placeholder="+593 99 999 9999" />
+                    <input type="tel" name="telefono" required className="w-full bg-brand-bg border border-brand-border rounded px-4 py-3 font-sans text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all" placeholder="+593 99 999 9999" />
                   </div>
                   <div className="space-y-2">
                     <label className="flex items-center gap-2 text-xs font-display font-bold text-brand-muted uppercase tracking-widest">
                       <MapPin size={14} className="text-brand-primary" /> Ubicación del Proyecto
                     </label>
-                    <select className="w-full bg-brand-bg border border-brand-border rounded px-4 py-3 font-sans text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all text-brand-text">
+                    <select name="ubicacion" required className="w-full bg-brand-bg border border-brand-border rounded px-4 py-3 font-sans text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all text-brand-text">
                       <option value="">Seleccione zona de obra...</option>
                       <option value="quito">Pichincha / Quito</option>
                       <option value="sierra">Resto de Sierra</option>
@@ -73,25 +109,25 @@ export default function Contact() {
                   <label className="text-xs font-display font-bold text-brand-text uppercase tracking-widest">Requerimiento Técnico Principal</label>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                     <label className="cursor-pointer">
-                      <input type="radio" name="service" className="peer sr-only" />
+                      <input type="radio" name="servicio" value="Pilotes CFA" required className="peer sr-only" />
                       <div className="bg-white border border-brand-border rounded p-3 text-center peer-checked:border-brand-primary peer-checked:bg-brand-primary/5 transition-all">
                         <span className="text-[10px] font-display font-bold text-brand-text uppercase tracking-widest">Pilotes CFA</span>
                       </div>
                     </label>
                     <label className="cursor-pointer">
-                      <input type="radio" name="service" className="peer sr-only" />
+                      <input type="radio" name="servicio" value="Micropilotes" className="peer sr-only" />
                       <div className="bg-white border border-brand-border rounded p-3 text-center peer-checked:border-brand-primary peer-checked:bg-brand-primary/5 transition-all">
                         <span className="text-[10px] font-display font-bold text-brand-text uppercase tracking-widest">Micropilotes</span>
                       </div>
                     </label>
                     <label className="cursor-pointer">
-                      <input type="radio" name="service" className="peer sr-only" />
+                      <input type="radio" name="servicio" value="Anclajes" className="peer sr-only" />
                       <div className="bg-white border border-brand-border rounded p-3 text-center peer-checked:border-brand-primary peer-checked:bg-brand-primary/5 transition-all">
                         <span className="text-[10px] font-display font-bold text-brand-text uppercase tracking-widest">Anclajes</span>
                       </div>
                     </label>
                     <label className="cursor-pointer">
-                      <input type="radio" name="service" className="peer sr-only" />
+                      <input type="radio" name="servicio" value="Otros" className="peer sr-only" />
                       <div className="bg-white border border-brand-border rounded p-3 text-center peer-checked:border-brand-primary peer-checked:bg-brand-primary/5 transition-all">
                         <span className="text-[10px] font-display font-bold text-brand-text uppercase tracking-widest">Otros</span>
                       </div>
@@ -103,7 +139,7 @@ export default function Contact() {
                   <label className="flex items-center gap-2 text-xs font-display font-bold text-brand-muted uppercase tracking-widest">
                     <AlignLeft size={14} className="text-brand-primary" /> Descripción de Especificaciones (Opcional)
                   </label>
-                  <textarea rows={4} className="w-full bg-brand-bg border border-brand-border rounded px-4 py-3 font-sans text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all resize-none" placeholder="Breve descripción del estudio de suelos, cargas estimadas, tipo de talud, etc..."></textarea>
+                  <textarea name="descripcion" rows={4} className="w-full bg-brand-bg border border-brand-border rounded px-4 py-3 font-sans text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all resize-none" placeholder="Breve descripción del estudio de suelos, cargas estimadas, tipo de talud, etc..."></textarea>
                 </div>
                 
                 <div className="pt-4 border-t border-brand-border">
@@ -111,8 +147,26 @@ export default function Contact() {
                      <ShieldCheck size={16} className="text-brand-primary" />
                      Sus datos están protegidos bajo sigilo técnico comercial.
                    </div>
-                   <button type="button" className="w-full bg-brand-deep hover:bg-brand-primary text-white font-display font-bold uppercase tracking-wider px-6 py-4 rounded transition-colors flex items-center justify-center gap-2 shadow-md">
-                     <Send size={18} /> Enviar Requerimiento a Oficina Técnica
+                   {status === 'success' && (
+                     <div className="bg-green-50 text-green-700 p-4 rounded mb-4 flex items-center gap-2 font-sans text-sm">
+                       <CheckCircle size={18} />
+                       ¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.
+                     </div>
+                   )}
+                   
+                   {status === 'error' && (
+                     <div className="bg-red-50 text-red-700 p-4 rounded mb-4 flex items-center gap-2 font-sans text-sm">
+                       <AlertCircle size={18} />
+                       Hubo un error al enviar el mensaje. Inténtalo de nuevo o contáctanos por teléfono.
+                     </div>
+                   )}
+
+                   <button type="submit" disabled={status === 'loading'} className="w-full bg-brand-deep hover:bg-brand-primary text-white font-display font-bold uppercase tracking-wider px-6 py-4 rounded transition-colors flex items-center justify-center gap-2 shadow-md disabled:opacity-70 disabled:cursor-not-allowed">
+                     {status === 'loading' ? (
+                       <><Loader2 size={18} className="animate-spin" /> Procesando...</>
+                     ) : (
+                       <><Send size={18} /> Enviar Requerimiento a Oficina Técnica</>
+                     )}
                    </button>
                 </div>
              </form>
@@ -144,10 +198,7 @@ export default function Contact() {
                  <h3 className="font-display font-bold text-lg text-brand-text mb-6">Sede Matriz</h3>
                  
                  <div className="space-y-6">
-                   <div className="flex gap-4">
-                     <div className="w-10 h-10 bg-brand-bg rounded flex items-center justify-center shrink-0">
-                       <MapPin size={18} className="text-brand-primary" />
-                     </div>
+                   <div>
                      <div>
                         <span className="font-display font-bold text-brand-muted opacity-50 uppercase tracking-widest text-sm">Ubicación</span>
                         <p className="font-sans text-sm text-brand-text font-semibold mt-1">Sector Solanda.</p>
@@ -155,16 +206,21 @@ export default function Contact() {
                      </div>
                    </div>
                    
-                   <div className="flex gap-4">
-                     <div className="w-10 h-10 bg-brand-bg rounded flex items-center justify-center shrink-0">
-                       <Phone size={18} className="text-brand-primary" />
-                     </div>
+                   <div>
                      <div>
                         <span className="font-display font-bold text-brand-muted opacity-50 uppercase tracking-widest text-sm">Contactos Directos</span>
-                        <p className="font-sans text-sm text-brand-muted mt-1 flex flex-col gap-1">
-                          <span className="text-brand-text font-semibold flex justify-between"><span>Teléfono:</span> (+593) 95 956 4486</span>
-                          <span className="text-brand-text font-semibold flex justify-between"><span>Email:</span> info@performconstructora.com</span>
-                        </p>
+                        <div className="font-sans text-sm text-brand-muted mt-2 space-y-3 w-full">
+                          <div className="text-brand-text">
+                            <div className="font-bold mb-0.5">Teléfono:</div>
+                            <div className="font-normal">(+593) 95 956 4486</div>
+                          </div>
+                          <div className="text-brand-text">
+                            <div className="font-bold mb-0.5">Email:</div>
+                            <a href="mailto:administracion199@perforconstrucciones.com" className="font-normal text-brand-primary hover:underline break-all">
+                              administracion199@perforconstrucciones.com
+                            </a>
+                          </div>
+                        </div>
                      </div>
                    </div>
                  </div>
