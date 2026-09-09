@@ -99,7 +99,7 @@ export default function Projects() {
 
   return (
     <div className="bg-brand-bg w-full">
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="inline-flex items-center gap-2 mb-4">
           <span className="w-2 h-2 bg-brand-primary"></span>
           <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-muted">Portafolio Geotécnico Verificado</span>

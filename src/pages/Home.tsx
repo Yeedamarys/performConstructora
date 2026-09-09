@@ -10,16 +10,16 @@ export default function Home() {
   return (
     <div className="bg-brand-bg w-full">
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
+      <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="space-y-8 lg:col-span-7 xl:col-span-6 break-words">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-brand-border rounded-full shadow-sm">
               <span className="w-2 h-2 rounded-full bg-brand-amber"></span>
               <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-muted">Ingeniería Geotécnica & Cimentaciones Profundas - Ecuador</span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-brand-text leading-[1.1] tracking-tight">
-              PERFOR CONSTRUCCIONES<br/>
+            <h1 className="text-4xl sm:text-5xl lg:text-4xl xl:text-5xl font-display font-bold text-brand-text leading-[1.1] tracking-tight">
+              PERFORCONSTRUCCIONES<br/>
               <span className="text-brand-primary">MOLINA & VILLAFUERTE</span>
             </h1>
             
@@ -30,10 +30,10 @@ export default function Home() {
            
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="#" className="inline-flex items-center justify-center gap-2 bg-brand-amber hover:bg-brand-amber-dark text-white font-display font-bold uppercase tracking-wider px-6 py-4 rounded shadow-[0_2px_4px_rgba(42,107,130,0.04)] transition-colors">
+              <Link to="/contacto" className="inline-flex items-center justify-center gap-2 bg-brand-amber hover:bg-brand-amber-dark text-white font-display font-bold uppercase tracking-wider px-6 py-4 rounded shadow-[0_2px_4px_rgba(42,107,130,0.04)] transition-colors">
                 <MessageCircle size={20} />
                 Cotiza tu proyecto
-              </a>
+              </Link>
               <Link to="/servicios" className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 border border-brand-border text-brand-deep font-display font-bold uppercase tracking-wider px-6 py-4 rounded transition-colors">
                 Ver nuestros servicios
                 <ArrowRight size={20} />
@@ -42,7 +42,7 @@ export default function Home() {
             
           </div>
           
-          <div className="relative">
+          <div className="relative lg:col-span-5 xl:col-span-6 mt-8 lg:mt-0">
             <div className="aspect-[4/3] rounded-xl bg-gray-200 border border-brand-border shadow-[0_16px_32px_rgba(43,47,51,0.08)] overflow-hidden relative">
                <img
                  src={homeImage}
@@ -61,7 +61,7 @@ export default function Home() {
 
       {/* Services Section */}
       <section className="bg-white border-t border-brand-border py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row justify-between items-end gap-8 mb-12">
             <div>
               <div className="text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest mb-3">Capacidades Operativas Especializadas</div>

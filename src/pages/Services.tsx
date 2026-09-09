@@ -56,7 +56,7 @@ const services = [
 export default function Services() {
   return (
     <main className="bg-brand-bg">
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
         <div className="flex flex-col lg:flex-row justify-between items-end gap-8 mb-12">
           <div>
             <div className="text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest mb-3">

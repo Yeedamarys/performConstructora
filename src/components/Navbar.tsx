@@ -15,17 +15,16 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-brand-border shadow-[0_1px_0_rgba(0,103,129,0.06)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[5.75rem] md:min-h-[6.75rem] py-2.5 flex items-center justify-between gap-4">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 min-h-[5.75rem] md:min-h-[6.75rem] py-2.5 flex items-center justify-between gap-4">
         <Link
           to="/"
           className="group flex shrink-0 items-center gap-2.5 sm:gap-3 py-2"
-          aria-label="Perfor Construcciones - Inicio"
+          aria-label="Perforconstrucciones - Perfo Construcciones"
         >
           <div className="flex h-[3.5rem] w-[5.125rem] shrink-0 items-center sm:h-[4.125rem] sm:w-[5.875rem] md:h-[4.25rem] md:w-[6rem]">
             <img
               src={logoMark}
-              alt=""
-              aria-hidden="true"
+              alt="Perforconstrucciones - Perfo Construcciones"
               className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.03]"
             />
           </div>
@@ -66,10 +65,10 @@ export default function Navbar() {
             <Phone size={16} />
             <span className="font-sans font-semibold text-sm">(+593) 95 956 4486</span>
           </div>
-          <a href="#" className="flex items-center gap-2 bg-brand-amber text-white font-display font-semibold text-sm uppercase tracking-wider px-5 py-3 rounded hover:bg-brand-amber-dark transition-all shadow-[0_2px_4px_rgba(42,107,130,0.04)]">
+          <Link to="/contacto" className="flex items-center gap-2 bg-brand-amber text-white font-display font-semibold text-sm uppercase tracking-wider px-5 py-3 rounded hover:bg-brand-amber-dark transition-all shadow-[0_2px_4px_rgba(42,107,130,0.04)]">
             <MessageCircle size={18} />
             Cotizar <br/> 
-          </a>
+          </Link>
           <button className="w-10 h-10 rounded-full bg-brand-bg flex items-center justify-center text-brand-deep border border-brand-border hover:bg-gray-100">
             <User size={18} />
           </button>

@@ -6,7 +6,7 @@ export default function About() {
   return (
     <div className="bg-brand-bg w-full">
       {/* Header */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="inline-flex items-center gap-2 mb-4">
           <span className="w-6 h-[2px] bg-brand-primary"></span>
           <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-muted">Ingeniería Estructural Subterránea</span>
@@ -18,15 +18,15 @@ export default function About() {
       </section>
 
       {/* Main Intro */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="bg-white rounded-xl border border-brand-border shadow-sm p-8 md:p-12 flex flex-col justify-between">
             <div>
               <div className="flex justify-between items-start mb-6">
                  <span className="text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest">Propósito Fundacional</span>
               </div>
-              <h2 className="font-display font text-[15] text-brand-text mb-6 leading-relaxed">
-             M&V PERFOR CONSTRUCCIONES fue creada para desarrollar y ejecutar proyectos de pilotaje, estabilización de taludes y construcciones de obra civil, satisfaciendo la necesidad de nuestros clientes con soluciones técnicas confiables, innovación y cumplimiento de plazos establecidos. aportando experiencia y conocimiento técnico que generan confianza, valor y bienestar para nuestros clientes, colaboradores y la comunidad, impulsando el crecimiento del país a través  de obras de excelencia.</h2>
+             <h2 className="font-display font text-[15] text-brand-text mb-6 leading-relaxed">
+             Perforconstrucciones (M&amp;V PERFOR' CONSTRUCCIONES) fue creada para desarrollar y ejecutar proyectos de pilotaje, estabilización de taludes y construcciones de obra civil, satisfaciendo la necesidad de nuestros clientes con soluciones técnicas confiables, innovación y cumplimiento de plazos establecidos. aportando experiencia y conocimiento técnico que generan confianza, valor y bienestar para nuestros clientes, colaboradores y la comunidad, impulsando el crecimiento del país a través  de obras de excelencia.</h2>
             </div>
             
             <div className="grid grid-cols-3 gap-4 border-t border-brand-border pt-8">
@@ -57,7 +57,7 @@ export default function About() {
           <div className="rounded-xl border border-brand-border overflow-hidden relative aspect-square lg:aspect-auto min-h-[320px]">
              <img
                src={nosotrosImage}
-               alt="Equipo de M&V Perfor Construcciones en obra"
+               alt="Equipo de Perforconstrucciones (Perfo Construcciones) en obra"
                className="absolute inset-0 h-full w-full object-cover"
              />
              
@@ -77,7 +77,7 @@ export default function About() {
       
 
       {/* Mission & Vision */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="mb-10">
           <div className="inline-flex items-center gap-2 mb-4">
             <span className="w-2 h-2 bg-brand-primary"></span>
@@ -103,7 +103,7 @@ export default function About() {
                  <div>
                    <div className="text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest mb-1">Propósito Corporativo</div>
                    <h3 className="font-display font-bold text-xl text-brand-text">Misión</h3>
-                   <div className="text-xs text-brand-muted font-sans mt-1">M&V Perfor Construcciones</div>
+                   <div className="text-xs text-brand-muted font-sans mt-1">Perforconstrucciones</div>
                  </div>
                </div>
                <div className="w-8 h-8 rounded bg-brand-bg flex items-center justify-center text-brand-primary border border-brand-border">
@@ -113,7 +113,7 @@ export default function About() {
              <div className="bg-brand-bg rounded p-6 border border-brand-border mb-6">
                <div className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest mb-2">Nuestro Compromiso</div>
                <p className="font-sans text-sm text-brand-text font-semibold mb-3">
-                 En M&V Perfor Construcciones brindamos soluciones especializadas en pilotaje, estabilización de taludes y construcciones de obra civil, ejecutando cada proyecto con calidad, seguridad y responsabilidad.
+                 En Perforconstrucciones brindamos soluciones especializadas en pilotaje, estabilización de taludes y construcciones de obra civil, ejecutando cada proyecto con calidad, seguridad y responsabilidad.
                </p>
                <p className="font-sans text-sm text-brand-muted">
                  Comprometidos en satisfacer las necesidades de nuestros clientes, contamos con un grupo capacitado, maquinaria especializada en el área de ejecución y experiencia para cumplir con los plazos establecidos.
@@ -171,7 +171,7 @@ export default function About() {
 
       {/* Advantages */}
       <section className="bg-white border-t border-brand-border py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
             <div className="inline-flex items-center gap-2 mb-4">
               <span className="w-6 h-[2px] bg-brand-primary"></span>

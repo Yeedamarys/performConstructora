@@ -3,9 +3,9 @@ import { useLocation } from 'react-router-dom';
 
 const pages: Record<string, { title: string; description: string; keywords: string }> = {
   '/': {
-    title: 'Perfor Construcciones',
-    description: 'PERFORCONSTRUCCIONES ofrece pilotaje barrenado y prebarrenado, hincado de pilotes, anclajes para muros pantalla y estabilización de taludes en Ecuador.',
-    keywords: 'PERFORCONSTRUCCIONES, ingeniería geotécnica Ecuador, pilotaje, pilotaje barrenado, pilotaje prebarrenado, hincado de pilotes, vibrohincado, anclajes, estabilización de taludes',
+    title: 'Perforconstrucciones (Perfo Construcciones) | Pilotaje y Estabilización de Taludes en Quito',
+    description: 'Perforconstrucciones ofrece pilotaje barrenado y prebarrenado, hincado de pilotes, anclajes para muros pantalla y estabilización de taludes en Quito y todo el Ecuador.',
+    keywords: 'Perforconstrucciones, Perfo Construcciones, ingeniería geotécnica Ecuador, pilotaje, pilotaje barrenado, hincado de pilotes, vibrohincado, anclajes, estabilización de taludes',
   },
   '/servicios': {
     title: 'Servicios geotécnicos | Pilotaje, anclajes y estabilización de taludes | PERFORCONSTRUCCIONES',

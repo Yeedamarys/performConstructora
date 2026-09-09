@@ -38,7 +38,7 @@ export default function Contact() {
     <div className="bg-brand-bg w-full">
       {/* Page Header */}
       <section className="bg-brand-deep py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="inline-flex items-center gap-2 mb-4">
             <span className="w-2 h-2 bg-brand-primary"></span>
             <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-primary">Asistencia Técnica Geotécnica</span>
@@ -50,7 +50,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 -mt-8 relative z-10">
+      <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-16 -mt-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
            
            {/* Form Column */}
@@ -184,7 +184,7 @@ export default function Contact() {
                    </div>
                    <h3 className="font-display font-bold text-xl mb-3">EMERGENCIA GEOTÉCNICA</h3>
                    <p className="text-sm text-white/90 font-sans mb-6">¿Contención de talud urgente o perforación no planificada? Contacto directo con el Director Técnico de Guardia.</p>
-                   <a href="#" className="w-full bg-white text-brand-text hover:bg-gray-50 font-display font-bold uppercase tracking-wider text-xs px-4 py-3 rounded transition-colors flex items-center justify-center gap-2 shadow-sm">
+                   <a href="tel:+593959564486" className="w-full bg-white text-brand-text hover:bg-gray-50 font-display font-bold uppercase tracking-wider text-xs px-4 py-3 rounded transition-colors flex items-center justify-center gap-2 shadow-sm">
                      <Phone size={16} className="text-brand-amber" /> Llamar Urgencia Geotécnica
                    </a>
                    <p className="text-center text-[10px] font-display font-bold text-white/70 uppercase tracking-widest mt-4">
