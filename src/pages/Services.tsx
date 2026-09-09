@@ -1,13 +1,13 @@
-import anclajes from '../images/anclajes.png';
-import cimentacionPrimaria from '../images/cimentaciónPrimaria.png';
-import hincado from '../images/hincado.png';
+import anclajehormigon from '../images/anclajehormigon.png';
+import barrenado from '../images/barrenado.png';
+import hincadopilotaje from '../images/hincadopilotaje.png';
 import taludes from '../images/taludes.png';
 
 const services = [
   {
     category: 'Cimentación primaria',
     title: 'Pilotaje Barrenado y Prebarrenado',
-    image: cimentacionPrimaria,
+    image: barrenado,
     alt: 'Pilotaje barrenado y prebarrenado',
     details: [
       ['Diámetros', 'de 0.30 m hasta 1.50 m.'],
@@ -18,7 +18,7 @@ const services = [
   {
     category: 'Refuerzo estructural',
     title: 'Hincado y Vibrohincado de Pilotes y Tablestacas',
-    image: hincado,
+    image: hincadopilotaje,
     alt: 'Hincado y vibrohincado de pilotes y tablestacas',
     details: [
       ['Diámetros', 'en tubería de 8 pulgadas hasta 60 pulgadas.'],
@@ -29,7 +29,7 @@ const services = [
   {
     category: 'Contención profunda',
     title: 'Anclajes para Muros Pantalla de Hormigón',
-    image: anclajes,
+    image: anclajehormigon,
     alt: 'Anclajes para muros pantalla de hormigón',
     details: [
       ['Diámetros', 'de 2 pulgadas a 6 pulgadas.'],
