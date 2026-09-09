@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Phone, MessageCircle, User } from 'lucide-react';
+import { Phone, MessageCircle, User, Menu, X } from 'lucide-react';
 import logoMark from '../images/logo-mark.png';
 
 export default function Navbar() {
   const location = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const links = [
     { name: 'Inicio', path: '/' },
@@ -73,7 +75,53 @@ export default function Navbar() {
             <User size={18} />
           </button>
         </div>
+
+        {/* Mobile menu button */}
+        <button 
+          className="md:hidden p-2 text-brand-text hover:bg-gray-100 rounded transition-colors"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle mobile menu"
+        >
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-white border-t border-brand-border absolute top-full left-0 w-full shadow-lg">
+          <nav className="flex flex-col p-4 space-y-2">
+            {links.map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`px-4 py-3 rounded font-sans font-medium text-base transition-colors ${
+                  location.pathname === link.path
+                    ? 'bg-brand-bg text-brand-deep'
+                    : 'text-brand-text hover:text-brand-primary hover:bg-gray-50'
+                }`}
+              >
+                {link.name}
+              </Link>
+            ))}
+            
+            <div className="border-t border-brand-border mt-4 pt-4 flex flex-col gap-4">
+              <a href="tel:+593959564486" className="flex items-center gap-3 px-4 py-3 bg-brand-bg rounded border border-brand-border text-brand-deep font-sans font-semibold">
+                <Phone size={18} className="text-brand-primary" />
+                (+593) 95 956 4486
+              </a>
+              <Link 
+                to="/contacto" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-2 bg-brand-amber text-white font-display font-semibold uppercase tracking-wider px-4 py-4 rounded hover:bg-brand-amber-dark transition-all"
+              >
+                <MessageCircle size={18} />
+                Cotizar Proyecto
+              </Link>
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
