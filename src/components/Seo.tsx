@@ -3,29 +3,29 @@ import { useLocation } from 'react-router-dom';
 
 const pages: Record<string, { title: string; description: string; keywords: string }> = {
   '/': {
-    title: 'Perforconstrucciones (Perfo Construcciones) | Pilotaje y Estabilización de Taludes en Quito',
-    description: 'Perforconstrucciones ofrece pilotaje barrenado y prebarrenado, hincado de pilotes, anclajes para muros pantalla y estabilización de taludes en Quito y todo el Ecuador.',
-    keywords: 'Perforconstrucciones, Perfo Construcciones, ingeniería geotécnica Ecuador, pilotaje, pilotaje barrenado, hincado de pilotes, vibrohincado, anclajes, estabilización de taludes',
+    title: 'Perfo Construcciones | Pilotaje y Estabilización de Taludes en Quito',
+    description: 'Perfo Construcciones ofrece pilotaje barrenado y prebarrenado, hincado de pilotes, anclajes para muros pantalla y estabilización de taludes en Quito y todo el Ecuador.',
+    keywords: 'Perfo Construcciones, ingeniería geotécnica Ecuador, pilotaje, pilotaje barrenado, hincado de pilotes, vibrohincado, anclajes, estabilización de taludes',
   },
   '/servicios': {
-    title: 'Servicios geotécnicos | Pilotaje, anclajes y estabilización de taludes | PERFORCONSTRUCCIONES',
-    description: 'Servicios de pilotaje barrenado y prebarrenado de 0.30 a 1.50 m, hincado y vibrohincado, anclajes para muros pantalla y estabilización de taludes bajo normas ACI, AASHTO, NEC-SE-GC y CE.020.',
+    title: 'Servicios de Pilotaje y Geotecnia en Quito | Perfo Construcciones',
+    description: 'Pilotaje barrenado, hincado de pilotes, anclajes para muros pantalla y estabilización de taludes. Normas ACI 543, AASHTO, NEC-SE-GC y CE.020. Servicio en Quito y Ecuador.',
     keywords: 'pilotaje barrenado, pilotaje prebarrenado, pilotes de 0.30 m a 1.50 m, vibrohincado, hincado de pilotes, tablaestacas, anclajes muros pantalla, estabilización de taludes, hormigón lanzado, ACI 543, AASHTO, NEC-SE-GC, CE.020',
   },
   '/proyectos': {
-    title: 'Proyectos de pilotaje y estabilización de taludes | PERFORCONSTRUCCIONES',
-    description: 'Conozca proyectos de pilotaje, micropilotaje, tubería hincada, anclajes y estabilización de taludes ejecutados por PERFORCONSTRUCCIONES en Ecuador.',
+    title: 'Proyectos de Pilotaje y Estabilización de Taludes | Perfo Construcciones',
+    description: 'Conoce nuestros proyectos ejecutados en Quito y Ecuador: puentes, hospitales, protección de ríos y taludes. Experiencia comprobada desde 2023.',
     keywords: 'proyecto Museo Yaku, puente río Monjas Pomasqui, proyecto Orquídeas, protección río Machángara, hospital privado Loja, río Monjas La Pampa, puente Majua Viche, Acua Shops, micropilotaje, tubería hincada',
   },
   '/nosotros': {
-    title: 'Nosotros | PERFORCONSTRUCCIONES',
-    description: 'Conozca a PERFORCONSTRUCCIONES, especialistas en ingeniería geotécnica, perforación profunda y soluciones estructurales para obras en Ecuador.',
-    keywords: 'PERFORCONSTRUCCIONES, empresa geotécnica Ecuador, perforación profunda, cimentaciones especiales',
+    title: 'Sobre Perfo Construcciones | Experiencia en Geotecnia y Obra Civil',
+    description: 'Perfo Construcciones: empresa quiteña especializada en pilotaje, estabilización de taludes y obra civil. Conoce nuestra misión, visión y ventajas competitivas.',
+    keywords: 'Perfo Construcciones, empresa geotécnica Ecuador, perforación profunda, cimentaciones especiales',
   },
   '/contacto': {
-    title: 'Contacto | PERFORCONSTRUCCIONES Quito',
-    description: 'Contacte a PERFORCONSTRUCCIONES para proyectos de pilotaje, anclajes, hincado de pilotes y estabilización de taludes en Ecuador.',
-    keywords: 'contacto PERFORCONSTRUCCIONES, pilotaje Quito, anclajes Quito, estabilización de taludes Quito',
+    title: 'Contacto | Perfo Construcciones — Cotiza tu Proyecto en Quito',
+    description: 'Solicita una cotización para tu proyecto de pilotaje, anclajes o estabilización de taludes. Atención en Quito y todo el Ecuador. Respuesta rápida.',
+    keywords: 'contacto Perfo Construcciones, pilotaje Quito, anclajes Quito, estabilización de taludes Quito',
   },
 };
 

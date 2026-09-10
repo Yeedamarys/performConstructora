@@ -11,6 +11,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
 import Projects from './pages/Projects';
+import ProjectDetail from './pages/ProjectDetail';
 import Contact from './pages/Contact';
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
             <Route path="/nosotros" element={<About />} />
             <Route path="/servicios" element={<Services />} />
             <Route path="/proyectos" element={<Projects />} />
+            <Route path="/proyectos/:slug" element={<ProjectDetail />} />
             <Route path="/contacto" element={<Contact />} />
           </Routes>
         </main>

@@ -60,7 +60,7 @@ export default function Footer() {
 
       <div className="border-t border-brand-border">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
-          <p className="text-xs text-brand-muted">Perforconstrucciones (M&amp;V PERFOR' CONSTRUCCIONES) — RUC 0705693935001 — Quito, Ecuador</p>
+          <p className="text-xs text-brand-muted">Perfo Construcciones — M&amp;V PERFOR' CONSTRUCCIONES — RUC 0705693935001 — Quito, Ecuador</p>
         </div>
       </div>
     </footer>

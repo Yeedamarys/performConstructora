@@ -17,10 +17,9 @@ export default function Home() {
               <span className="w-2 h-2 rounded-full bg-brand-amber"></span>
               <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-muted">Ingeniería Geotécnica & Cimentaciones Profundas - Ecuador</span>
             </div>
-            
             <h1 className="text-4xl sm:text-5xl lg:text-4xl xl:text-5xl font-display font-bold text-brand-text leading-[1.1] tracking-tight">
-              PERFORCONSTRUCCIONES<br/>
-              <span className="text-brand-primary">MOLINA & VILLAFUERTE</span>
+              Perfo Construcciones<br/>
+              <span className="text-brand-primary text-3xl sm:text-4xl">Pilotaje y Estabilización de Taludes en Quito, Ecuador</span>
             </h1>
             
             <p className="text-lg text-brand-muted font-sans max-w-xl">

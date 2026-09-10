@@ -20,13 +20,12 @@ export default function Navbar() {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 min-h-[5.75rem] md:min-h-[6.75rem] py-2.5 flex items-center justify-between gap-4">
         <Link
           to="/"
-          className="group flex shrink-0 items-center gap-2.5 sm:gap-3 py-2"
-          aria-label="Perforconstrucciones - Perfo Construcciones"
+          aria-label="Perfo Construcciones"
         >
           <div className="flex h-[3.5rem] w-[5.125rem] shrink-0 items-center sm:h-[4.125rem] sm:w-[5.875rem] md:h-[4.25rem] md:w-[6rem]">
             <img
               src={logoMark}
-              alt="Perforconstrucciones - Perfo Construcciones"
+              alt="Perfo Construcciones"
               className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.03]"
             />
           </div>

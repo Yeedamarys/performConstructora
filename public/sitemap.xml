@@ -2,7 +2,69 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://perforconstrucciones.com/</loc>
-    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://perforconstrucciones.com/servicios</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://perforconstrucciones.com/proyectos</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://perforconstrucciones.com/nosotros</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://perforconstrucciones.com/contacto</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  
+  <!-- Individual Project Pages -->
+  <url>
+    <loc>https://perforconstrucciones.com/proyectos/anclaje-talud-museo-yaku</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://perforconstrucciones.com/proyectos/puente-rio-monjas-pomasqui</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://perforconstrucciones.com/proyectos/mitigacion-riesgo-rio-monjas-orquideas</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://perforconstrucciones.com/proyectos/proteccion-rio-machangara</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://perforconstrucciones.com/proyectos/micropilotaje-hospital-loja</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://perforconstrucciones.com/proyectos/tuberia-hincada-rio-monjas-la-pampa</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://perforconstrucciones.com/proyectos/puente-majua-viche</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://perforconstrucciones.com/proyectos/cimentacion-acua-shops</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
   </url>
 </urlset>
