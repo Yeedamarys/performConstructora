@@ -1,6 +1,6 @@
 import { CheckCircle2, Award, Shield, FileCheck, Hammer, Activity, Target, Eye } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import nosotrosImage from '../images/nosotros.png';
+//import nosotrosImage from '../images/nosotros.png';
 
 export default function About() {
   return (
@@ -56,7 +56,7 @@ export default function About() {
           
           <div className="rounded-xl border border-brand-border overflow-hidden relative aspect-square lg:aspect-auto min-h-[320px]">
              <img
-               src={nosotrosImage}
+               src="https://res.cloudinary.com/ddegmlh4o/image/upload/v1788979976/p1f1.png"
                alt="Equipo de Perfo Construcciones en obra"
                className="absolute inset-0 h-full w-full object-cover"
              />

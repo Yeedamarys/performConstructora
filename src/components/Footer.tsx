@@ -51,7 +51,7 @@ export default function Footer() {
               </p>
               <p className="flex items-center justify-center gap-3 md:justify-start">
                 <Clock3 size={18} className="shrink-0 text-brand-primary" />
-                <span>Lun - Vie: 00:00 - 00:00</span>
+                <span>Lun - Vie: 08:00 - 17:00</span>
               </p>
             </address>
           </div>

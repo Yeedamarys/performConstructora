@@ -7,7 +7,7 @@ const services = [
   {
     category: 'Cimentación primaria',
     title: 'Pilotaje Barrenado y Prebarrenado',
-    image: barrenado,
+    image: "https://res.cloudinary.com/ddegmlh4o/image/upload/v1788979974/barrenado.png",
     alt: 'Pilotaje barrenado y prebarrenado',
     details: [
       ['Diámetros', 'de 0.30 m hasta 1.50 m.'],
@@ -18,7 +18,7 @@ const services = [
   {
     category: 'Refuerzo estructural',
     title: 'Hincado y Vibrohincado de Pilotes y Tablestacas',
-    image: hincadopilotaje,
+    image: "https://res.cloudinary.com/ddegmlh4o/image/upload/v1788979974/hincadopilotaje.png",
     alt: 'Hincado y vibrohincado de pilotes y tablestacas',
     details: [
       ['Diámetros', 'en tubería de 8 pulgadas hasta 60 pulgadas.'],
@@ -29,7 +29,7 @@ const services = [
   {
     category: 'Contención profunda',
     title: 'Anclajes para Muros Pantalla de Hormigón',
-    image: anclajehormigon,
+    image: "https://res.cloudinary.com/ddegmlh4o/image/upload/v1788979974/anclajehormigon.png",
     alt: 'Anclajes para muros pantalla de hormigón',
     details: [
       ['Diámetros', 'de 2 pulgadas a 6 pulgadas.'],
@@ -40,7 +40,7 @@ const services = [
   {
     category: 'Mitigación de riesgo',
     title: 'Estabilización de Taludes',
-    image: taludes,
+    image: "https://res.cloudinary.com/ddegmlh4o/image/upload/v1788979978/taludes.png",
     alt: 'Estabilización de taludes',
     description: 'Ejecutamos soluciones integrales para proteger y estabilizar taludes, desde la preparación de la superficie hasta el refuerzo y revestimiento final.',
     details: [

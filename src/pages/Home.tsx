@@ -1,10 +1,9 @@
 import { CheckCircle2, ArrowRight, Clock, MessageCircle, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import anclajes from '../images/anclajes.png';
-import cimentacionPrimaria from '../images/cimentaciónPrimaria.png';
-import hincado from '../images/hincado.png';
-import homeImage from '../images/home.png';
-import taludes from '../images/taludes.png';
+//import cimentacionPrimaria from '../images/cimentaciónPrimaria.png';
+//import hincado from '../images/hincado.png';
+//import taludes from '../images/taludes.png';
 
 export default function Home() {
   return (
@@ -44,7 +43,7 @@ export default function Home() {
           <div className="relative lg:col-span-5 xl:col-span-6 mt-8 lg:mt-0">
             <div className="aspect-[4/3] rounded-xl bg-gray-200 border border-brand-border shadow-[0_16px_32px_rgba(43,47,51,0.08)] overflow-hidden relative">
                <img
-                 src={homeImage}
+                 src="https://res.cloudinary.com/ddegmlh4o/image/upload/v1788979975/home.png"
                  alt="Equipo de perforación trabajando en obra"
                  className="absolute inset-0 h-full w-full object-cover"
                />
@@ -76,7 +75,7 @@ export default function Home() {
              <div className="bg-brand-bg rounded-lg border border-brand-border overflow-hidden group">
                <div className="aspect-[16/9] bg-gray-200 relative overflow-hidden">
                  <img
-                   src={cimentacionPrimaria}
+                   src="https://res.cloudinary.com/ddegmlh4o/image/upload/v1788979974/cimentaci%C3%B3nPrimaria.png"
                    alt="Cimentación primaria con pilotaje prebarrenado CFA"
                    className="absolute inset-0 h-full w-full object-cover"
                  />
@@ -98,7 +97,7 @@ export default function Home() {
              <div className="bg-brand-bg rounded-lg border border-brand-border overflow-hidden group">
                <div className="aspect-[16/9] bg-gray-200 relative overflow-hidden">
                  <img
-                   src={hincado}
+                   src="https://res.cloudinary.com/ddegmlh4o/image/upload/v1788979974/hincado.png"
                    alt="Hincado y vibrohincado de pilotes y tablestacas"
                    className="absolute inset-0 h-full w-full object-cover"
                  />
@@ -119,7 +118,7 @@ export default function Home() {
              <div className="bg-brand-bg rounded-lg border border-brand-border overflow-hidden group">
                <div className="aspect-[16/9] bg-gray-200 relative overflow-hidden">
                  <img
-                   src={anclajes}
+                   src="https://res.cloudinary.com/ddegmlh4o/image/upload/v1788979975/anclajes.png"
                    alt="Anclajes para muros pantalla de hormigón"
                    className="absolute inset-0 h-full w-full object-cover"
                  />
@@ -140,7 +139,7 @@ export default function Home() {
              <div className="bg-brand-bg rounded-lg border border-brand-border overflow-hidden group">
                <div className="aspect-[16/9] bg-gray-200 relative overflow-hidden">
                  <img
-                   src={taludes}
+                   src="https://res.cloudinary.com/ddegmlh4o/image/upload/v1788979978/taludes.png"
                    alt="Estabilización de taludes"
                    className="absolute inset-0 h-full w-full object-cover"
                  />
