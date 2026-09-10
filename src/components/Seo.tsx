@@ -39,6 +39,18 @@ function updateMeta(name: string, content: string) {
   meta.setAttribute('content', content);
 }
 
+function updateCanonical(pathname: string) {
+  let canonical = document.querySelector('link[rel="canonical"]');
+  if (!canonical) {
+    canonical = document.createElement('link');
+    canonical.setAttribute('rel', 'canonical');
+    document.head.appendChild(canonical);
+  }
+  // Ensure we don't have trailing slashes for consistency unless it's just '/'
+  const cleanPath = pathname === '/' ? '' : pathname;
+  canonical.setAttribute('href', `https://perforconstrucciones.com${cleanPath}`);
+}
+
 function updateProperty(property: string, content: string) {
   let meta = document.querySelector(`meta[property="${property}"]`);
   if (!meta) {
@@ -59,6 +71,9 @@ export default function Seo() {
     updateMeta('keywords', page.keywords);
     updateProperty('og:title', page.title);
     updateProperty('og:description', page.description);
+    
+    // Update Canonical URL
+    updateCanonical(pathname);
   }, [pathname]);
 
   return null;
