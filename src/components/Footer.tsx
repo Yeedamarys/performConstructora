@@ -1,5 +1,4 @@
-import { Clock3, MapPin, Phone } from 'lucide-react';
-
+import { Clock3, MapPin, Phone, Copyright } from 'lucide-react';
 const services = [
   'Pilotaje Prebarrenado CFA',
   'Hincado y vibrohincado de pilotes y tablaestacas',
@@ -60,7 +59,10 @@ export default function Footer() {
 
       <div className="border-t border-brand-border">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
-          <p className="text-xs text-brand-muted">Perfo Construcciones — M&amp;V PERFOR' CONSTRUCCIONES — RUC 0705693935001 — Quito, Ecuador</p>
+          <p className="text-xs text-brand-muted flex items-center justify-center gap-2">
+            <Copyright size={14} />
+        2026 Perfor Construcciones - Quito, Ecuador, todos los derechos reservados.
+          </p>
         </div>
       </div>
     </footer>

@@ -29,16 +29,18 @@ export default function ProjectDetail() {
   return (
     <div className="bg-brand-bg w-full min-h-screen">
       <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <Link to="/proyectos" className="inline-flex items-center gap-2 text-brand-primary hover:text-brand-amber font-sans font-semibold mb-8 transition-colors">
-          <ArrowLeft size={20} />
-          Volver a Proyectos
-        </Link>
-        
-        <div className="inline-flex items-center gap-2 mb-4">
-          <span className="w-2 h-2 bg-brand-primary"></span>
-          <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-muted">Ficha Técnica de Obra</span>
+        <div className="mb-8 flex items-center gap-3 sm:gap-4">
+          <Link to="/proyectos" className="inline-flex items-center gap-2 text-brand-primary hover:text-brand-amber font-sans font-semibold leading-none transition-colors">
+            <ArrowLeft size={20} />
+            Volver a Proyectos
+          </Link>
+
+          <div className="inline-flex items-center gap-2 leading-none">
+            <span className="w-2 h-2 bg-brand-primary inline-block"></span>
+            <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-muted">FICHA TÉCNICA DE OBRA</span>
+          </div>
         </div>
-        
+
         <h1 className="text-4xl sm:text-5xl font-display font-bold text-brand-text mb-8">{project.h1}</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">

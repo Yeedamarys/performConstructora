@@ -12,7 +12,7 @@ export default function About() {
           <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-muted">Ingeniería Estructural Subterránea</span>
         </div>
         <h1 className="text-4xl sm:text-5xl font-display font-bold text-brand-text mb-6">¿QUIÉNES SOMOS?</h1>
-        <p className="text-lg text-brand-muted font-sans max-w-3xl">
+        <p className="text-lg text-brand-muted font-sans max-w-3xl text-justify">
           Más de una década ejecutando soluciones de perforación profunda, estabilización de taludes críticos y cimentación especial con rigor analítico y respaldo instrumental en el territorio ecuatoriano.
         </p>
       </section>
@@ -25,7 +25,7 @@ export default function About() {
               <div className="flex justify-between items-start mb-6">
                  <span className="text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest">Propósito Fundacional</span>
               </div>
-             <h2 className="font-display font text-[15] text-brand-text mb-6 leading-relaxed">
+             <h2 className="font-display font text-[15] text-brand-text mb-6 leading-relaxed text-justify">
              Perfo Construcciones fue creada para desarrollar y ejecutar proyectos de pilotaje, estabilización de taludes y construcciones de obra civil, satisfaciendo la necesidad de nuestros clientes con soluciones técnicas confiables, innovación y cumplimiento de plazos establecidos. Aportando experiencia y conocimiento técnico que generan confianza, valor y bienestar para nuestros clientes, colaboradores y la comunidad, impulsando el crecimiento del país a través de obras de excelencia.</h2>
             </div>
             
@@ -87,7 +87,7 @@ export default function About() {
             <h2 className="text-3xl font-display font-bold text-brand-text">Misión y Visión</h2>
             
           </div>
-          <p className="font-sans text-brand-muted mt-4 max-w-2xl">
+          <p className="font-sans text-brand-muted mt-4 max-w-2xl text-justify">
             Nuestros principios fundamentales guían cada proyecto que ejecutamos, definiendo quiénes somos hoy y hacia dónde nos proyectamos como empresa líder en construcción especializada.
           </p>
         </div>
@@ -112,10 +112,10 @@ export default function About() {
              </div>
              <div className="bg-brand-bg rounded p-6 border border-brand-border mb-6">
                <div className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest mb-2">Nuestro Compromiso</div>
-               <p className="font-sans text-sm text-brand-text font-semibold mb-3">
-                 En Perfo Construcciones brindamos soluciones especializadas en pilotaje, estabilización de taludes y construcciones de obra civil, ejecutando cada proyecto con calidad, seguridad y responsabilidad.
+               <p className="font-sans text-sm text-brand-text font-semibold mb-3 text-justify">
+                 En Perfor Construcciones brindamos soluciones especializadas en pilotaje, estabilización de taludes y construcciones de obra civil, ejecutando cada proyecto con calidad, seguridad y responsabilidad.
                </p>
-               <p className="font-sans text-sm text-brand-muted">
+               <p className="font-sans text-sm text-brand-muted text-justify">
                  Comprometidos en satisfacer las necesidades de nuestros clientes, contamos con un grupo capacitado, maquinaria especializada en el área de ejecución y experiencia para cumplir con los plazos establecidos.
                </p>
              </div>
@@ -149,10 +149,10 @@ export default function About() {
              </div>
              <div className="bg-brand-bg rounded p-6 border border-brand-border mb-6">
                <div className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest mb-2">Nuestra Meta</div>
-               <p className="font-sans text-sm text-brand-text font-semibold mb-3">
+               <p className="font-sans text-sm text-brand-text font-semibold mb-3 text-justify">
                  Ser una empresa líder y reconocida a nivel nacional en el sector de la construcción especializada en pilotaje, estabilización de taludes y construcciones de obra civil, destacándonos por la excelencia técnica, innovación, seguridad y confianza de nuestros clientes.
                </p>
-               <p className="font-sans text-sm text-brand-muted">
+               <p className="font-sans text-sm text-brand-muted text-justify">
                  Buscamos un crecimiento sostenible que nos permita participar en los principales proyectos de infraestructura del país, generando valor para nuestros colaboradores y clientes.
                </p>
              </div>
@@ -178,7 +178,7 @@ export default function About() {
               <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-muted">Diferenciales Técnicos en Terreno</span>
             </div>
             <h2 className="text-3xl font-display font-bold text-brand-text max-w-2xl">Ventajas Competitivas Certificadas</h2>
-            <p className="font-sans text-brand-muted mt-4 max-w-3xl">
+            <p className="font-sans text-brand-muted mt-4 max-w-3xl text-justify">
               Nuestra infraestructura elimina intermediarios y asegura que cada ensayo, pilote y perforación responda con precisión matemática ante las auditorías de fiscalización.
             </p>
           </div>
@@ -190,7 +190,7 @@ export default function About() {
                </div>
                <div className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest mb-3">Equipamiento Industrial</div>
                <h3 className="font-display font-bold text-xl text-brand-text mb-4">Maquinaria propia de perforación continua</h3>
-               <p className="font-sans text-sm text-brand-muted mb-6">Disponibilidad inmediata sin dependencia de subarrendamientos. Contamos con torres de perforación de hélice continua (CFA), martillos de fondo y equipos de inyección de alta presión propios.</p>
+               <p className="font-sans text-sm text-brand-muted mb-6 text-justify">Disponibilidad inmediata sin dependencia de subarrendamientos. Contamos con torres de perforación de hélice continua (CFA), martillos de fondo y equipos de inyección de alta presión propios.</p>
                <ul className="space-y-2 mb-8">
                  <li className="flex items-start gap-2 text-sm text-brand-text font-sans"><span className="w-1.5 h-1.5 bg-brand-primary rounded-sm mt-1.5 shrink-0"></span> Torres hidráulicas de orugas autopropulsadas</li>
                  <li className="flex items-start gap-2 text-sm text-brand-text font-sans"><span className="w-1.5 h-1.5 bg-brand-primary rounded-sm mt-1.5 shrink-0"></span> Cero retrasos por flete o intermediación</li>
@@ -207,7 +207,7 @@ export default function About() {
                </div>
                <div className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest mb-3">Metodología y Calidad</div>
                <h3 className="font-display font-bold text-xl text-brand-text mb-4">Certificación y ensayos de carga</h3>
-               <p className="font-sans text-sm text-brand-muted mb-6">Validación empírica en laboratorio y campo. Ensayos PIT (Pile Integrity Test), pruebas de carga estática y ensayos de tracción en anclajes para garantizar solvencia.</p>
+               <p className="font-sans text-sm text-brand-muted mb-6 text-justify">Validación empírica en laboratorio y campo. Ensayos PIT (Pile Integrity Test), pruebas de carga estática y ensayos de tracción en anclajes para garantizar solvencia.</p>
                <ul className="space-y-2 mb-8">
                  <li className="flex items-start gap-2 text-sm text-brand-text font-sans"><span className="w-1.5 h-1.5 bg-brand-primary rounded-sm mt-1.5 shrink-0"></span> Ensayos PIT de integridad sónica no destructiva</li>
                  <li className="flex items-start gap-2 text-sm text-brand-text font-sans"><span className="w-1.5 h-1.5 bg-brand-primary rounded-sm mt-1.5 shrink-0"></span> Informes geotécnicos con curvas deformación</li>
@@ -224,7 +224,7 @@ export default function About() {
                </div>
                <div className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest mb-3">Marco Legal Vinculante</div>
                <h3 className="font-display font-bold text-xl text-brand-text mb-4">Cumplimiento estricto de cronogramas y normativa NEC-SE-DS</h3>
-               <p className="font-sans text-sm text-brand-muted mb-6">Diseño sismorresistente acorde a la Norma Ecuatoriana de la Construcción. Compromiso de penalización cero por desfase de cronograma de ruta crítica.</p>
+               <p className="font-sans text-sm text-brand-muted mb-6 text-justify">Diseño sismorresistente acorde a la Norma Ecuatoriana de la Construcción. Compromiso de penalización cero por desfase de cronograma de ruta crítica.</p>
                <ul className="space-y-2 mb-8">
                  <li className="flex items-start gap-2 text-sm text-brand-text font-sans"><span className="w-1.5 h-1.5 bg-brand-primary rounded-sm mt-1.5 shrink-0"></span> Zonificación de aceleración espectral</li>
                  <li className="flex items-start gap-2 text-sm text-brand-text font-sans"><span className="w-1.5 h-1.5 bg-brand-primary rounded-sm mt-1.5 shrink-0"></span> Monitoreo continuo de bermas y asentamientos</li>

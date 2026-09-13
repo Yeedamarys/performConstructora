@@ -44,7 +44,7 @@ export default function Contact() {
             <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-primary">Asistencia Técnica Geotécnica</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">CONTACTO DE OPERACIONES</h1>
-          <p className="text-lg text-white/80 font-sans max-w-2xl">
+          <p className="text-lg text-white/80 font-sans max-w-2xl text-justify">
             Despliegue operativo a nivel nacional. Cotizaciones, estudios de suelo, licitaciones de consorcios e intervenciones de estabilización emergente.
           </p>
         </div>
@@ -61,7 +61,7 @@ export default function Contact() {
                </div>
                <div>
                  <h2 className="font-display font-bold text-2xl text-brand-text">Formulario Geotécnico Especializado</h2>
-                 <p className="text-sm text-brand-muted font-sans mt-1">Adjunta detalles estructurales para agilizar el análisis presupuestario.</p>
+                 <p className="text-sm text-brand-muted font-sans mt-1 text-justify">Adjunta detalles estructurales para agilizar el análisis presupuestario.</p>
                </div>
              </div>
              

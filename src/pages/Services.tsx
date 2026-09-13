@@ -66,7 +66,7 @@ export default function Services() {
               SERVICIOS DE INGENIERÍA GEOTÉCNICA
             </h1>
           </div>
-          <p className="font-sans text-brand-muted max-w-md lg:text-right">
+          <p className="font-sans text-brand-muted max-w-md lg:text-right text-justify">
             Soluciones técnicas para cimentaciones, contención y estabilización, ejecutadas con parámetros definidos y normativa aplicable.
           </p>
         </div>
@@ -90,7 +90,7 @@ export default function Services() {
               <div className="p-8">
                 <h2 className="font-display font-bold text-2xl text-brand-text mb-4">{service.title}</h2>
                 {service.description && (
-                  <p className="font-sans text-sm text-brand-muted leading-relaxed mb-5">{service.description}</p>
+                  <p className="font-sans text-sm text-brand-muted leading-relaxed mb-5 text-justify">{service.description}</p>
                 )}
                 <dl className="space-y-2.5 font-sans text-sm text-brand-muted leading-relaxed">
                   {service.details.map(([label, detail]) => (

@@ -17,11 +17,11 @@ export default function Home() {
               <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-muted">Ingeniería Geotécnica & Cimentaciones Profundas - Ecuador</span>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-4xl xl:text-5xl font-display font-bold text-brand-text leading-[1.1] tracking-tight">
-              Perfo Construcciones<br/>
+              Perfor Construcciones<br/>
               <span className="text-brand-primary text-3xl sm:text-4xl">Pilotaje y Estabilización de Taludes en Quito, Ecuador</span>
             </h1>
             
-            <p className="text-lg text-brand-muted font-sans max-w-xl">
+            <p className="text-lg text-brand-muted font-sans max-w-xl text-justify">
               Soluciones de perforación, pilotaje y estabilización de taludes con experiencia técnica comprobada en proyectos de infraestructura civil en todo el Ecuador.
             </p>
             
@@ -63,9 +63,9 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row justify-between items-end gap-8 mb-12">
             <div>
               <div className="text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest mb-3">Capacidades Operativas Especializadas</div>
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-brand-text max-w-xl">INGENIERÍA DE SUELOS & PERFORACIÓN PROFUNDA</h2>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-[#006781] max-w-xl">INGENIERÍA DE SUELOS & PERFORACIÓN PROFUNDA</h2>
             </div>
-            <p className="font-sans text-brand-muted max-w-md lg:text-right">
+            <p className="font-sans text-brand-muted max-w-md lg:text-right text-justify">
               Equipamiento de alto rendimiento operado bajo rigurosos protocolos geotécnicos para garantizar la estabilidad de superestructuras.
             </p>
           </div>
@@ -85,7 +85,7 @@ export default function Home() {
                </div>
                <div className="p-8">
                  <h3 className="font-display font-bold text-2xl text-brand-text mb-3">Pilotaje Prebarrenado CFA</h3>
-                 <p className="font-sans text-sm text-brand-muted mb-6">
+                 <p className="font-sans text-sm text-brand-muted mb-6 text-justify">
                    Ejecución continua de pilotes de gran diámetro para edificaciones de altura y viaductos. Perforación con inyección simultánea de hormigón que minimiza la descompresión del suelo andino.
                  </p>
                 
@@ -107,7 +107,7 @@ export default function Home() {
                </div>
                <div className="p-8">
                  <h3 className="font-display font-bold text-2xl text-brand-text mb-3">Hincado y Vibrohincado de pilotes y tablestacas</h3>
-                 <p className="font-sans text-sm text-brand-muted mb-6">
+                 <p className="font-sans text-sm text-brand-muted mb-6 text-justify">
                    Soluciones de soporte en espacios confinados, submuraciones de edificios patrimoniales e inyecciones de lechada a alta presión para mejorar la capacidad portante del estrato base.
                  </p>
                  
@@ -128,7 +128,7 @@ export default function Home() {
                </div>
                <div className="p-8">
                  <h3 className="font-display font-bold text-2xl text-brand-text mb-3">Anclajes para muros pantalla de hormigón</h3>
-                 <p className="font-sans text-sm text-brand-muted mb-6">
+                 <p className="font-sans text-sm text-brand-muted mb-6 text-justify">
                    Sistemas integrales de contención perimetral para sótanos de gran profundidad en áreas urbanas densas, previniendo asentamientos en predios e infraestructura vecina.
                  </p>
                 
@@ -149,7 +149,7 @@ export default function Home() {
                </div>
                <div className="p-8">
                  <h3 className="font-display font-bold text-2xl text-brand-text mb-3">Estabilización de Taludes</h3>
-                 <p className="font-sans text-sm text-brand-muted mb-6">
+                 <p className="font-sans text-sm text-brand-muted mb-6 text-justify">
                    Blindaje geotécnico en laderas y cortes viales mediante hormigón lanzado por vía húmeda (shotcrete), colocación de malla electrosoldada y drenes californianos subhorizontales.
                  </p>
                  
