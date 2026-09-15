@@ -41,21 +41,11 @@ export default function ProjectDetail() {
           </div>
         </div>
 
-        <h1 className="text-4xl sm:text-5xl font-display font-bold text-brand-text mb-8">{project.h1}</h1>
+        <h1 className="text-4xl sm:text-5xl font-display font-bold text-brand-text mb-8 text-center">{project.h1}</h1>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-8 space-y-8">
-            <div className="grid grid-cols-1 gap-6">
-              {project.images.map((img, idx) => (
-                <div key={idx} className="rounded-xl border border-brand-border overflow-hidden bg-white">
-                  <img src={img.src} alt={img.alt} className="w-full h-auto object-cover" />
-                </div>
-              ))}
-            </div>
-          </div>
-          
-          <div className="lg:col-span-4">
-            <div className="bg-white rounded-xl border border-brand-border p-8 sticky top-32">
+        <div className="max-w-3xl mx-auto">
+          <div>
+            <div className="bg-white rounded-xl border border-brand-border p-8 shadow-sm">
               <h2 className="font-display font-bold text-xl text-brand-text mb-6 border-b border-brand-border pb-4">Detalles del Proyecto</h2>
               
               <dl className="space-y-6">

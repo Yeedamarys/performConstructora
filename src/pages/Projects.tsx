@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
-import { ShieldCheck, ArrowRight } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ShieldCheck, ArrowRight, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { projectsData } from '../data/projects';
 
 export default function Projects() {
   const projects = projectsData;
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -55,29 +56,29 @@ export default function Projects() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((p, i) => (
-            <Link to={`/proyectos/${p.slug}`} key={i} className="bg-white rounded-xl border border-brand-border overflow-hidden hover:shadow-lg transition-all group flex flex-col">
-              <div className="grid grid-cols-2 gap-px bg-brand-border h-48">
+            <div key={i} className="bg-white rounded-xl border border-brand-border overflow-hidden hover:shadow-lg transition-all group flex flex-col">
+              <div className="grid grid-cols-2 gap-px bg-brand-border h-48 cursor-pointer">
                 {p.images && p.images[0] ? (
-                  <div className={`relative overflow-hidden ${!p.images[1] ? 'col-span-2' : ''}`}>
+                  <div className={`relative overflow-hidden ${!p.images[1] ? 'col-span-2' : ''}`} onClick={() => setSelectedImage(p.images[0].src)}>
                     <img
                       src={p.images[0].src}
                       alt={p.images[0].alt}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                     />
                   </div>
                 ) : null}
                 {p.images && p.images[1] ? (
-                  <div className="relative overflow-hidden">
+                  <div className="relative overflow-hidden" onClick={() => setSelectedImage(p.images[1].src)}>
                     <img
                       src={p.images[1].src}
                       alt={p.images[1].alt}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                     />
                   </div>
                 ) : null}
               </div>
 
-              <div className="p-6 flex flex-col flex-grow">
+              <Link to={`/proyectos/${p.slug}`} className="p-6 flex flex-col flex-grow">
                 <div className="mb-4">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand-primary"></span>
@@ -101,11 +102,37 @@ export default function Projects() {
                   <span className="font-display font-bold text-[10px] uppercase tracking-widest mr-2">Ver Ficha</span>
                   <ArrowRight size={16} />
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </div>
           ))}
         </div>
       </section>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-6 sm:p-12 cursor-pointer"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="relative inline-flex max-w-full max-h-full">
+            <button 
+              className="absolute -top-4 -right-4 sm:-top-5 sm:-right-5 bg-brand-primary text-white hover:bg-brand-amber rounded-full p-1.5 sm:p-2 shadow-lg transition-colors z-10"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedImage(null);
+              }}
+            >
+              <X size={20} className="sm:w-6 sm:h-6" />
+            </button>
+            <img 
+              src={selectedImage} 
+              alt="Vista ampliada" 
+              className="max-w-full max-h-full object-contain rounded shadow-2xl"
+              onClick={(e) => e.stopPropagation()} 
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

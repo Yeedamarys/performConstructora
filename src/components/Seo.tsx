@@ -5,12 +5,12 @@ const pages: Record<string, { title: string; description: string; keywords: stri
   '/': {
     title: 'Perfo Construcciones | Pilotaje y Estabilización de Taludes en Quito',
     description: 'Perfo Construcciones ofrece pilotaje barrenado y prebarrenado, hincado de pilotes, anclajes para muros pantalla y estabilización de taludes en Quito y todo el Ecuador.',
-    keywords: 'Perfo Construcciones, ingeniería geotécnica Ecuador, pilotaje, pilotaje barrenado, hincado de pilotes, vibrohincado, anclajes, estabilización de taludes',
+    keywords: 'Perfo Construcciones, ingeniería geotécnica Ecuador, pilotaje, pilotaje barrenado, hincado de pilotes, vibrohincado, anclajes, estabilización de taludes, talud, hormigón lanzado, perforación en suelo, colocación de malla electrosoldada, colocación de geomanto, malla triple torsión, inyección de lechada, perforación en roca',
   },
   '/servicios': {
     title: 'Servicios de Pilotaje y Geotecnia en Quito | Perfo Construcciones',
     description: 'Pilotaje barrenado, hincado de pilotes, anclajes para muros pantalla y estabilización de taludes. Normas ACI 543, AASHTO, NEC-SE-GC y CE.020. Servicio en Quito y Ecuador.',
-    keywords: 'pilotaje barrenado, pilotaje prebarrenado, pilotes de 0.30 m a 1.50 m, vibrohincado, hincado de pilotes, tablaestacas, anclajes muros pantalla, estabilización de taludes, hormigón lanzado, ACI 543, AASHTO, NEC-SE-GC, CE.020',
+    keywords: 'pilotaje barrenado, pilotaje prebarrenado, pilotes de 0.30 m a 1.50 m, vibrohincado, hincado de pilotes, tablaestacas, anclajes muros pantalla, estabilización de taludes, hormigón lanzado, ACI 543, AASHTO, NEC-SE-GC, CE.020, perforación en suelo, malla electrosoldada, geomanto, malla triple torsión, inyección de lechada para consolidación, perforación en roca',
   },
   '/proyectos': {
     title: 'Proyectos de Pilotaje y Estabilización de Taludes | Perfo Construcciones',

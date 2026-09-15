@@ -150,7 +150,7 @@ export default function Home() {
                <div className="p-8">
                  <h3 className="font-display font-bold text-2xl text-brand-text mb-3">Estabilización de Taludes</h3>
                  <p className="font-sans text-sm text-brand-muted mb-6 text-justify">
-                   Blindaje geotécnico en laderas y cortes viales mediante hormigón lanzado por vía húmeda (shotcrete), colocación de malla electrosoldada y drenes californianos subhorizontales.
+                   Blindaje geotécnico en laderas y cortes viales mediante hormigón lanzado por vía húmeda (shotcrete), colocación de malla electrosoldada, colocación de geomanto y malla triple torsión. Especialistas en perforación en suelo, perforación en roca y drenes californianos subhorizontales.
                  </p>
                  
                </div>
