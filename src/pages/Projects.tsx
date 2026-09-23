@@ -21,7 +21,9 @@ export default function Projects() {
         
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
           <div>
-            <h1 className="text-4xl sm:text-5xl font-display font-bold text-brand-text mb-4">RESPALDO Y EXPERIENCIA<br/>COMPROBADA</h1>
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-brand-text mb-4">
+               <span className="text-brand-primary font-semibold block sm:inline">RESPALDO Y PROYECTOS DE PILOTAJE, ANCLAJES Y TALUDES</span>
+            </h1>
             <p className="text-lg text-brand-muted font-sans max-w-2xl text-justify">
               Cada proyecto que ejecutamos cuenta con certificación oficial y acta de entrega - recepción de nuestros clientes. Obras de infraestructura vial, urbana e hidroeléctrica en todo el Ecuador.
             </p>

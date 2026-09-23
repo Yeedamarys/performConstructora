@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { FileText, User, Mail, Phone, MapPin, AlignLeft, Send, ShieldCheck, Zap, MessageCircle, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 
 export default function Contact() {
@@ -43,7 +43,9 @@ export default function Contact() {
             <span className="w-2 h-2 bg-brand-primary"></span>
             <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-primary">Asistencia Técnica Geotécnica</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">CONTACTO DE OPERACIONES</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white mb-6">
+            COTIZACIÓN DE PILOTAJE, ANCLAJES Y TALUDES
+          </h1>
           <p className="text-lg text-white/80 font-sans max-w-2xl text-justify">
             Despliegue operativo a nivel nacional. Cotizaciones, estudios de suelo, licitaciones de consorcios e intervenciones de estabilización emergente.
           </p>
@@ -60,7 +62,7 @@ export default function Contact() {
                  <FileText size={24} />
                </div>
                <div>
-                 <h2 className="font-display font-bold text-2xl text-brand-text">Formulario Geotécnico Especializado</h2>
+                 <h2 className="font-display font-bold text-2xl text-brand-text">Formulario de Perforación en Suelo, Roca y Anclajes</h2>
                  <p className="text-sm text-brand-muted font-sans mt-1 text-justify">Adjunta detalles estructurales para agilizar el análisis presupuestario.</p>
                </div>
              </div>

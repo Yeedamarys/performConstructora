@@ -11,7 +11,9 @@ export default function About() {
           <span className="w-6 h-[2px] bg-brand-primary"></span>
           <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-muted">Ingeniería Estructural Subterránea</span>
         </div>
-        <h1 className="text-4xl sm:text-5xl font-display font-bold text-brand-text mb-6">¿QUIÉNES SOMOS?</h1>
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-brand-text mb-6">
+          ¿QUIÉNES SOMOS? <span className="text-brand-primary font-semibold text-xl sm:text-2xl lg:text-3xl block sm:inline">— Expertos en Pilotaje y Geotecnia</span>
+        </h1>
         <p className="text-lg text-brand-muted font-sans max-w-3xl text-justify">
           Más de una década ejecutando soluciones de perforación profunda, estabilización de taludes críticos y cimentación especial con rigor analítico y respaldo instrumental en el territorio ecuatoriano.
         </p>
@@ -25,8 +27,8 @@ export default function About() {
               <div className="flex justify-between items-start mb-6">
                  <span className="text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest">Propósito Fundacional</span>
               </div>
-             <h2 className="font-display font text-[15] text-brand-text mb-6 leading-relaxed text-justify">
-             Perfo Construcciones fue creada para desarrollar y ejecutar proyectos de pilotaje, estabilización de taludes y construcciones de obra civil, satisfaciendo la necesidad de nuestros clientes con soluciones técnicas confiables, innovación y cumplimiento de plazos establecidos. Aportando experiencia y conocimiento técnico que generan confianza, valor y bienestar para nuestros clientes, colaboradores y la comunidad, impulsando el crecimiento del país a través de obras de excelencia.</h2>
+             <p className="font-sans text-brand-text mb-6 leading-relaxed text-justify">
+             Perfo Construcciones fue creada para desarrollar y ejecutar proyectos de pilotaje, estabilización de taludes y construcciones de obra civil, satisfaciendo la necesidad de nuestros clientes con soluciones técnicas confiables, innovación y cumplimiento de plazos establecidos. Aportando experiencia y conocimiento técnico que generan confianza, valor y bienestar para nuestros clientes, colaboradores y la comunidad, impulsando el crecimiento del país a través de obras de excelencia.</p>
             </div>
             
             <div className="grid grid-cols-3 gap-4 border-t border-brand-border pt-8">
@@ -84,7 +86,7 @@ export default function About() {
             <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-muted">Identidad Corporativa</span>
           </div>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <h2 className="text-3xl font-display font-bold text-brand-text">Misión y Visión</h2>
+            <h2 className="text-3xl font-display font-bold text-brand-text">Misión y Visión en Obras de Pilotaje y Contención</h2>
             
           </div>
           <p className="font-sans text-brand-muted mt-4 max-w-2xl text-justify">
@@ -177,7 +179,7 @@ export default function About() {
               <span className="w-6 h-[2px] bg-brand-primary"></span>
               <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-muted">Diferenciales Técnicos en Terreno</span>
             </div>
-            <h2 className="text-3xl font-display font-bold text-brand-text max-w-2xl">Ventajas Competitivas Certificadas</h2>
+            <h2 className="text-3xl font-display font-bold text-brand-text max-w-2xl">Ventajas Competitivas en Anclajes, Taludes y Perforación</h2>
             <p className="font-sans text-brand-muted mt-4 max-w-3xl text-justify">
               Nuestra infraestructura elimina intermediarios y asegura que cada ensayo, pilote y perforación responda con precisión matemática ante las auditorías de fiscalización.
             </p>

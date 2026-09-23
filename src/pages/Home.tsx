@@ -16,9 +16,9 @@ export default function Home() {
               <span className="w-2 h-2 rounded-full bg-brand-amber"></span>
               <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-muted">Ingeniería Geotécnica & Cimentaciones Profundas - Ecuador</span>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-4xl xl:text-5xl font-display font-bold text-brand-text leading-[1.1] tracking-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-4xl font-display font-bold text-brand-text leading-[1.15] tracking-tight">
               Perfor Construcciones<br/>
-              <span className="text-brand-primary text-3xl sm:text-4xl">Pilotaje y Estabilización de Taludes en Quito, Ecuador</span>
+              <span className="text-brand-primary text-2xl sm:text-3xl lg:text-3xl font-semibold">Pilotaje, Anclajes y Estabilización de Taludes en Quito, Ecuador</span>
             </h1>
             
             <p className="text-lg text-brand-muted font-sans max-w-xl text-justify">
@@ -63,7 +63,7 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row justify-between items-end gap-8 mb-12">
             <div>
               <div className="text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest mb-3">Capacidades Operativas Especializadas</div>
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-[#006781] max-w-xl">INGENIERÍA DE SUELOS & PERFORACIÓN PROFUNDA</h2>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-[#006781] max-w-xl">PILOTAJE, ANCLAJES Y PERFORACIÓN EN SUELO Y ROCA</h2>
             </div>
             <p className="font-sans text-brand-muted max-w-md lg:text-right text-justify">
               Equipamiento de alto rendimiento operado bajo rigurosos protocolos geotécnicos para garantizar la estabilidad de superestructuras.

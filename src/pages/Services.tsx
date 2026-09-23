@@ -6,9 +6,9 @@ import taludes from '../images/taludes.png';
 const services = [
   {
     category: 'Cimentación primaria',
-    title: 'Pilotaje Barrenado y Prebarrenado',
+    title: 'Pilotaje Barrenado y Perforación en Suelo',
     image: "https://res.cloudinary.com/ddegmlh4o/image/upload/v1788979974/barrenado.png",
-    alt: 'Pilotaje barrenado y prebarrenado',
+    alt: 'Pilotaje barrenado y perforación en suelo',
     details: [
       ['Diámetros', 'de 0.30 m hasta 1.50 m.'],
       ['Profundidad', 'desde 1 m hasta 35 m.'],
@@ -17,7 +17,7 @@ const services = [
   },
   {
     category: 'Refuerzo estructural',
-    title: 'Hincado y Vibrohincado de Pilotes y Tablestacas',
+    title: 'Hincado y Vibrohincado de Pilotes',
     image: "https://res.cloudinary.com/ddegmlh4o/image/upload/v1788979974/hincadopilotaje.png",
     alt: 'Hincado y vibrohincado de pilotes y tablestacas',
     details: [
@@ -28,9 +28,9 @@ const services = [
   },
   {
     category: 'Contención profunda',
-    title: 'Anclajes para Muros Pantalla de Hormigón',
+    title: 'Anclajes para Muros Pantalla e Inyección de Lechada',
     image: "https://res.cloudinary.com/ddegmlh4o/image/upload/v1788979974/anclajehormigon.png",
-    alt: 'Anclajes para muros pantalla de hormigón',
+    alt: 'Anclajes para muros pantalla e inyección de lechada',
     details: [
       ['Diámetros', 'de 2 pulgadas a 6 pulgadas.'],
       ['Profundidad', 'desde 1 m hasta 18 m.'],
@@ -39,9 +39,9 @@ const services = [
   },
   {
     category: 'Mitigación de riesgo',
-    title: 'Estabilización de Taludes',
+    title: 'Estabilización de Taludes con Hormigón Lanzado y Anclajes',
     image: "https://res.cloudinary.com/ddegmlh4o/image/upload/v1788979978/taludes.png",
-    alt: 'Estabilización de taludes',
+    alt: 'Estabilización de taludes con hormigón lanzado y anclajes',
     description: 'Ejecutamos soluciones integrales para proteger y estabilizar taludes, desde la preparación de la superficie hasta el refuerzo y revestimiento final. Especialistas en perforación en suelo y perforación en roca para anclajes.',
     details: [
       ['Perfilado de talud', 'de 5 cm a 20 cm.'],
@@ -63,8 +63,8 @@ export default function Services() {
             <div className="text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest mb-3">
               Capacidades Operativas Especializadas
             </div>
-            <h1 className="text-3xl md:text-4xl font-display font-bold text-brand-text max-w-xl">
-              SERVICIOS DE INGENIERÍA GEOTÉCNICA
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-brand-text max-w-2xl">
+               <span className="text-brand-primary font-semibold">SERVICIOS DE PILOTAJE, ANCLAJES Y ESTABILIZACIÓN DE TALUDES</span>
             </h1>
           </div>
           <p className="font-sans text-brand-muted max-w-md lg:text-right text-justify">
