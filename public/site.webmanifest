@@ -1,0 +1,19 @@
+{
+  "name": "Perfo Construcciones",
+  "short_name": "Perfo",
+  "icons": [
+    {
+      "src": "/logo-mark.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo-mark.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#006781",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
