@@ -44,8 +44,71 @@
   will-change: opacity, transform;
 }
 
+/* Motion system: one confident curve, physical press feedback */
+@theme {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-brand-primary) 22%, transparent);
+  color: var(--color-brand-deep);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 3px;
+}
+
+.btn-press {
+  transition:
+    transform 160ms var(--ease-out-expo),
+    background-color 250ms var(--ease-out-expo),
+    border-color 250ms var(--ease-out-expo),
+    box-shadow 350ms var(--ease-out-expo),
+    color 250ms var(--ease-out-expo);
+}
+.btn-press:active {
+  transform: scale(0.97);
+}
+
+/* Lift for interactive cards: shadow carries offset + soft blur, transform only */
+.card-lift {
+  transition:
+    transform 500ms var(--ease-out-expo),
+    box-shadow 500ms var(--ease-out-expo),
+    border-color 300ms var(--ease-out-expo);
+}
+@media (hover: hover) {
+  .card-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px -18px rgba(0, 77, 98, 0.28);
+    border-color: color-mix(in srgb, var(--color-brand-primary) 30%, var(--color-brand-border));
+  }
+}
+
+/* Tilt cards: motion owns the transform; CSS owns depth (shadow) and edge */
+.card-tilt {
+  transform-style: preserve-3d;
+  transition:
+    box-shadow 500ms var(--ease-out-expo),
+    border-color 300ms var(--ease-out-expo);
+}
+@media (hover: hover) {
+  .card-tilt:hover {
+    box-shadow: 0 24px 48px -20px rgba(0, 77, 98, 0.32);
+    border-color: color-mix(in srgb, var(--color-brand-primary) 30%, var(--color-brand-border));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .whatsapp-cta {
+    animation: none;
+  }
+  .btn-press:active,
+  .card-lift:hover {
+    transform: none;
+  }
+  .animate-ping {
     animation: none;
   }
 }

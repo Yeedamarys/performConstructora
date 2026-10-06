@@ -5,6 +5,14 @@ export interface ProjectImage {
   alt: string;
 }
 
+export type ProjectCategory = 'pilotaje' | 'taludes' | 'puentes';
+
+export const PROJECT_CATEGORIES: { id: ProjectCategory; label: string }[] = [
+  { id: 'pilotaje', label: 'Pilotaje y Cimentación' },
+  { id: 'taludes', label: 'Estabilización de Taludes' },
+  { id: 'puentes', label: 'Puentes & Viales' },
+];
+
 export interface Project {
   slug: string;
   title: string;
@@ -14,6 +22,7 @@ export interface Project {
   team?: string;
   year: string;
   desc: string;
+  categories: ProjectCategory[];
   images: ProjectImage[];
 }
 
@@ -26,6 +35,7 @@ export const projectsData: Project[] = [
     client: "Ing. Eduardo Lazcano",
     year: "Agosto 2023",
     desc: "Perforación y anclaje en talud del Museo Yaku.",
+    categories: ['taludes'],
     images: [
       { src: getImg('p1f1.png'), alt: "Anclaje talud Museo Yaku Quito Ecuador" }
     ]
@@ -38,6 +48,7 @@ export const projectsData: Project[] = [
     client: "Ing. Luis Urgiles",
     year: "Diciembre 2024",
     desc: "Pilotaje de Ø 0.80 m a 12 m de profundidad con camisa perdida.",
+    categories: ['pilotaje', 'puentes'],
     images: [
       { src: getImg('p2f1.jpg'), alt: "Pilotaje 0.80m puente vehicular Río Monjas Pomasqui Quito" },
       { src: getImg('p2f2.png'), alt: "Estructura de pilotaje puente vehicular Río Monjas" }
@@ -52,6 +63,7 @@ export const projectsData: Project[] = [
     team: "Ing. Marco Peralta · Ing. Carlos Sánchez · Ing. Steve Burgos",
     year: "2025–2026",
     desc: "Estabilización de taludes para la mitigación de riesgo en el río Monjas.",
+    categories: ['taludes'],
     images: [
       { src: getImg('p3f1.png'), alt: "Estabilización de taludes mitigación riesgo Río Monjas Quito" },
       { src: getImg('p3f2.png'), alt: "Malla de protección para estabilización Río Monjas" }
@@ -65,6 +77,7 @@ export const projectsData: Project[] = [
     client: "Ing. Francisco Vaca",
     year: "Septiembre 2025",
     desc: "Anclajes y colocación de geomanto con malla de triple torsión.",
+    categories: ['taludes'],
     images: [
       { src: getImg('p4f1.png'), alt: "Anclajes y geomanto protección Río Machángara Quito" },
       { src: getImg('p4f2.png'), alt: "Colocación de malla triple torsión Río Machángara" }
@@ -78,6 +91,7 @@ export const projectsData: Project[] = [
     client: "Ing. Salomón Rosero",
     year: "Junio 2026",
     desc: "Micropilotaje de Ø 0.38 m a 18 m de profundidad con camisa perdida.",
+    categories: ['pilotaje'],
     images: [
       { src: getImg('p5f1.png'), alt: "Micropilotaje 0.38m Hospital Privado Loja Ecuador" },
       { src: getImg('p5f2.png'), alt: "Maquinaria de micropilotaje en obra Hospital Loja" }
@@ -91,6 +105,7 @@ export const projectsData: Project[] = [
     client: "Ing. Francisco Vaca",
     year: "Mayo 2025",
     desc: "Tubería hincada de Ø 0.30 m a 8 m de profundidad.",
+    categories: ['pilotaje', 'taludes'],
     images: [
       { src: getImg('p6f1.png'), alt: "Tubería hincada 0.30m protección talud Río Monjas La Pampa" },
       { src: getImg('p6f2.png'), alt: "Obras de protección con tubería hincada La Pampa" }
@@ -104,6 +119,7 @@ export const projectsData: Project[] = [
     client: "Ing. Abigail Cedeño",
     year: "Marzo 2024",
     desc: "Tubería hincada de Ø 0.30 m a 12 m de profundidad.",
+    categories: ['pilotaje', 'puentes'],
     images: [
       { src: getImg('p7f1.png'), alt: "Tubería hincada 0.30m puente vehicular Majúa Viche" },
       { src: getImg('p7f2.png'), alt: "Cimentación puente Majúa Viche Ecuador" }
@@ -117,6 +133,7 @@ export const projectsData: Project[] = [
     client: "IFCE Cimentaciones Ecuador",
     year: "Julio 2026",
     desc: "Pilotaje de Ø 0.80 m a 23 m de profundidad para la cimentación del proyecto.",
+    categories: ['pilotaje'],
     images: [
       { src: getImg('p8f1.png'), alt: "Pilotaje 0.80m cimentación Acua Shops Ecuador" },
       { src: getImg('p8f2.png'), alt: "Maquinaria de pilotaje Acua Shops" }

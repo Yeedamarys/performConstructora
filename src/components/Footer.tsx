@@ -1,17 +1,20 @@
 import { Clock3, MapPin, Phone, Copyright } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Stagger, StaggerItem } from './motion';
+import { serviceHref } from '../data/services';
 const services = [
-  'Pilotaje Prebarrenado CFA',
-  'Hincado y vibrohincado de pilotes y tablaestacas',
-  'Anclajes para muros pantalla de hormigón',
-  'Estabilización de taludes',
+  { label: 'Pilotaje Prebarrenado CFA', slug: 'pilotaje-barrenado' },
+  { label: 'Hincado y vibrohincado de pilotes y tablaestacas', slug: 'hincado-vibrohincado-pilotes' },
+  { label: 'Anclajes para muros pantalla de hormigón', slug: 'anclajes-muros-pantalla' },
+  { label: 'Estabilización de taludes', slug: 'estabilizacion-taludes' },
 ];
 
 export default function Footer() {
   return (
     <footer className="bg-white border-t border-brand-border">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-1 gap-10 text-center md:grid-cols-2 md:text-left lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-5">
+        <Stagger stagger={0.12} className="grid grid-cols-1 gap-10 text-center md:grid-cols-2 md:text-left lg:grid-cols-12 lg:gap-12">
+          <StaggerItem className="lg:col-span-5">
             <div className="inline-flex flex-col items-center md:items-start">
               <span className="font-display text-lg font-bold tracking-wide text-brand-primary">PERFORCONSTRUCCIONES</span>
               <span className="mt-1 h-0.5 w-12 bg-brand-primary" />
@@ -23,21 +26,26 @@ export default function Footer() {
               <span className="h-2 w-2 rounded-full bg-brand-success" />
               Operatividad geotécnica activa
             </div>
-          </div>
+          </StaggerItem>
 
-          <div className="lg:col-span-4">
+          <StaggerItem className="lg:col-span-4">
             <h4 className="font-display font-bold text-brand-text">Servicios especializados</h4>
             <ul className="mt-5 space-y-3 text-sm text-brand-muted">
               {services.map((service) => (
-                <li key={service} className="flex items-start justify-center gap-2 text-left md:justify-start">
+                <li key={service.slug} className="flex items-start justify-center gap-2 text-left md:justify-start">
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-primary" />
-                  <span>{service}</span>
+                  <Link
+                    to={serviceHref(service.slug)}
+                    className="underline-offset-4 decoration-brand-primary/40 transition-colors hover:text-brand-primary hover:underline"
+                  >
+                    {service.label}
+                  </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </StaggerItem>
 
-          <div className="lg:col-span-3">
+          <StaggerItem className="lg:col-span-3">
             <h4 className="font-display font-bold text-brand-text">Sede matriz · Quito</h4>
             <address className="mt-5 space-y-4 text-sm not-italic text-brand-muted">
               <p className="flex items-start justify-center gap-3 text-left md:justify-start">
@@ -53,8 +61,8 @@ export default function Footer() {
                 <span>Lun - Vie: 08:00 - 17:00</span>
               </p>
             </address>
-          </div>
-        </div>
+          </StaggerItem>
+        </Stagger>
       </div>
 
       <div className="border-t border-brand-border">

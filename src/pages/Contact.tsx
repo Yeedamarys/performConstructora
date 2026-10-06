@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
+import { EASE_OUT, Stagger, StaggerItem, staggerChild } from '../components/motion';
 import { FileText, User, Mail, Phone, MapPin, AlignLeft, Send, ShieldCheck, Zap, MessageCircle, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+
+const sidebarItem = {
+  hidden: { opacity: 0, x: 28 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: EASE_OUT } },
+};
 
 export default function Contact() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -38,25 +45,29 @@ export default function Contact() {
     <div className="bg-brand-bg w-full">
       {/* Page Header */}
       <section className="bg-brand-deep py-16">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 mb-4">
+        <Stagger onMount delay={0.05} className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+          <StaggerItem className="inline-flex items-center gap-2 mb-4">
             <span className="w-2 h-2 bg-brand-primary"></span>
             <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-primary">Asistencia Técnica Geotécnica</span>
-          </div>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white mb-6">
+          </StaggerItem>
+          <motion.h1 variants={staggerChild} className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white mb-6">
             COTIZACIÓN DE PILOTAJE, ANCLAJES Y TALUDES
-          </h1>
-          <p className="text-lg text-white/80 font-sans max-w-2xl text-justify">
+          </motion.h1>
+          <motion.p variants={staggerChild} className="text-lg text-white/80 font-sans max-w-2xl text-justify">
             Despliegue operativo a nivel nacional. Cotizaciones, estudios de suelo, licitaciones de consorcios e intervenciones de estabilización emergente.
-          </p>
-        </div>
+          </motion.p>
+        </Stagger>
       </section>
 
       <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-16 -mt-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
            
            {/* Form Column */}
-           <div className="lg:col-span-2 bg-white rounded-xl shadow-lg border border-brand-border p-8 md:p-12">
+           <motion.div
+             className="lg:col-span-2 bg-white rounded-xl shadow-lg border border-brand-border p-8 md:p-12"
+             initial={{ opacity: 0, y: 40 }}
+             animate={{ opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE_OUT, delay: 0.25 } }}
+           >
              <div className="flex items-center gap-3 mb-8 pb-6 border-b border-brand-border">
                <div className="w-12 h-12 bg-brand-bg rounded-lg flex items-center justify-center text-brand-primary">
                  <FileText size={24} />
@@ -112,25 +123,25 @@ export default function Contact() {
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                     <label className="cursor-pointer">
                       <input type="radio" name="servicio" value="Pilotes CFA" required className="peer sr-only" />
-                      <div className="bg-white border border-brand-border rounded p-3 text-center peer-checked:border-brand-primary peer-checked:bg-brand-primary/5 transition-all">
+                      <div className="bg-white border border-brand-border rounded p-3 text-center peer-checked:border-brand-primary peer-checked:bg-brand-primary/5 peer-checked:shadow-[0_6px_16px_-10px_rgba(0,103,129,0.6)] peer-focus-visible:ring-2 peer-focus-visible:ring-brand-primary hover:border-brand-primary/40 active:scale-[0.97] transition-all duration-300">
                         <span className="text-[10px] font-display font-bold text-brand-text uppercase tracking-widest">Pilotes CFA</span>
                       </div>
                     </label>
                     <label className="cursor-pointer">
                       <input type="radio" name="servicio" value="Micropilotes" className="peer sr-only" />
-                      <div className="bg-white border border-brand-border rounded p-3 text-center peer-checked:border-brand-primary peer-checked:bg-brand-primary/5 transition-all">
+                      <div className="bg-white border border-brand-border rounded p-3 text-center peer-checked:border-brand-primary peer-checked:bg-brand-primary/5 peer-checked:shadow-[0_6px_16px_-10px_rgba(0,103,129,0.6)] peer-focus-visible:ring-2 peer-focus-visible:ring-brand-primary hover:border-brand-primary/40 active:scale-[0.97] transition-all duration-300">
                         <span className="text-[10px] font-display font-bold text-brand-text uppercase tracking-widest">Micropilotes</span>
                       </div>
                     </label>
                     <label className="cursor-pointer">
                       <input type="radio" name="servicio" value="Anclajes" className="peer sr-only" />
-                      <div className="bg-white border border-brand-border rounded p-3 text-center peer-checked:border-brand-primary peer-checked:bg-brand-primary/5 transition-all">
+                      <div className="bg-white border border-brand-border rounded p-3 text-center peer-checked:border-brand-primary peer-checked:bg-brand-primary/5 peer-checked:shadow-[0_6px_16px_-10px_rgba(0,103,129,0.6)] peer-focus-visible:ring-2 peer-focus-visible:ring-brand-primary hover:border-brand-primary/40 active:scale-[0.97] transition-all duration-300">
                         <span className="text-[10px] font-display font-bold text-brand-text uppercase tracking-widest">Anclajes</span>
                       </div>
                     </label>
                     <label className="cursor-pointer">
                       <input type="radio" name="servicio" value="Otros" className="peer sr-only" />
-                      <div className="bg-white border border-brand-border rounded p-3 text-center peer-checked:border-brand-primary peer-checked:bg-brand-primary/5 transition-all">
+                      <div className="bg-white border border-brand-border rounded p-3 text-center peer-checked:border-brand-primary peer-checked:bg-brand-primary/5 peer-checked:shadow-[0_6px_16px_-10px_rgba(0,103,129,0.6)] peer-focus-visible:ring-2 peer-focus-visible:ring-brand-primary hover:border-brand-primary/40 active:scale-[0.97] transition-all duration-300">
                         <span className="text-[10px] font-display font-bold text-brand-text uppercase tracking-widest">Otros</span>
                       </div>
                     </label>
@@ -149,35 +160,58 @@ export default function Contact() {
                      <ShieldCheck size={16} className="text-brand-primary" />
                      Sus datos están protegidos bajo sigilo técnico comercial.
                    </div>
+                   <AnimatePresence mode="wait">
                    {status === 'success' && (
-                     <div className="bg-green-50 text-green-700 p-4 rounded mb-4 flex items-center gap-2 font-sans text-sm">
+                     <motion.div
+                       key="ok"
+                       role="status"
+                       initial={{ opacity: 0, y: -8, scale: 0.98 }}
+                       animate={{ opacity: 1, y: 0, scale: 1 }}
+                       exit={{ opacity: 0, y: -6, transition: { duration: 0.2 } }}
+                       transition={{ duration: 0.45, ease: EASE_OUT }}
+                       className="bg-green-50 text-green-700 p-4 rounded mb-4 flex items-center gap-2 font-sans text-sm"
+                     >
                        <CheckCircle size={18} />
                        ¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.
-                     </div>
+                     </motion.div>
                    )}
                    
                    {status === 'error' && (
-                     <div className="bg-red-50 text-red-700 p-4 rounded mb-4 flex items-center gap-2 font-sans text-sm">
+                     <motion.div
+                       key="err"
+                       role="alert"
+                       initial={{ opacity: 0 }}
+                       animate={{ opacity: 1, x: [0, -6, 6, -4, 4, 0] }}
+                       exit={{ opacity: 0, transition: { duration: 0.2 } }}
+                       transition={{ duration: 0.45 }}
+                       className="bg-red-50 text-red-700 p-4 rounded mb-4 flex items-center gap-2 font-sans text-sm"
+                     >
                        <AlertCircle size={18} />
                        Hubo un error al enviar el mensaje. Inténtalo de nuevo o contáctanos por teléfono.
-                     </div>
+                     </motion.div>
                    )}
+                   </AnimatePresence>
 
-                   <button type="submit" disabled={status === 'loading'} className="w-full bg-brand-deep hover:bg-brand-primary text-white font-display font-bold uppercase tracking-wider px-6 py-4 rounded transition-colors flex items-center justify-center gap-2 shadow-md disabled:opacity-70 disabled:cursor-not-allowed">
+                   <button type="submit" disabled={status === 'loading'} className="btn-press group w-full bg-brand-deep hover:bg-brand-primary text-white font-display font-bold uppercase tracking-wider px-6 py-4 rounded flex items-center justify-center gap-2 shadow-md hover:shadow-[0_14px_28px_-12px_rgba(0,77,98,0.6)] disabled:opacity-70 disabled:cursor-not-allowed">
                      {status === 'loading' ? (
                        <><Loader2 size={18} className="animate-spin" /> Procesando...</>
                      ) : (
-                       <><Send size={18} /> Enviar Requerimiento a Oficina Técnica</>
+                       <><Send size={18} className="transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1 group-hover:-translate-y-0.5" /> Enviar Requerimiento a Oficina Técnica</>
                      )}
                    </button>
                 </div>
              </form>
-           </div>
+           </motion.div>
            
            {/* Sidebar Info */}
-           <div className="space-y-6">
+           <motion.div
+             className="space-y-6"
+             initial="hidden"
+             animate="visible"
+             variants={{ visible: { transition: { staggerChildren: 0.12, delayChildren: 0.4 } } }}
+           >
               {/* Emergency block */}
-              <div className="bg-brand-amber rounded-xl p-6 text-white shadow-md relative overflow-hidden">
+              <motion.div variants={sidebarItem} className="bg-brand-amber rounded-xl p-6 text-white shadow-md relative overflow-hidden">
                  <Zap size={100} className="absolute -bottom-6 -right-6 text-white opacity-10" />
                  <div className="relative z-10">
                    <div className="text-[10px] font-display font-bold uppercase tracking-widest mb-2 flex items-center gap-2">
@@ -186,17 +220,17 @@ export default function Contact() {
                    </div>
                    <h3 className="font-display font-bold text-xl mb-3">EMERGENCIA GEOTÉCNICA</h3>
                    <p className="text-sm text-white/90 font-sans mb-6">¿Contención de talud urgente o perforación no planificada? Contacto directo con el Director Técnico de Guardia.</p>
-                   <a href="tel:+593959564486" className="w-full bg-white text-brand-text hover:bg-gray-50 font-display font-bold uppercase tracking-wider text-xs px-4 py-3 rounded transition-colors flex items-center justify-center gap-2 shadow-sm">
-                     <Phone size={16} className="text-brand-amber" /> Llamar Urgencia Geotécnica
+                   <a href="tel:+593959564486" className="btn-press group w-full bg-white text-brand-text hover:bg-gray-50 font-display font-bold uppercase tracking-wider text-xs px-4 py-3 rounded flex items-center justify-center gap-2 shadow-sm hover:shadow-[0_10px_22px_-10px_rgba(0,0,0,0.35)]">
+                     <Phone size={16} className="text-brand-amber transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110" /> Llamar Urgencia Geotécnica
                    </a>
                    <p className="text-center text-[10px] font-display font-bold text-white/70 uppercase tracking-widest mt-4">
                      Línea operativa 24/7
                    </p>
                  </div>
-              </div>
+              </motion.div>
 
               {/* HQ Info */}
-              <div className="bg-white rounded-xl border border-brand-border p-6 shadow-sm">
+              <motion.div variants={sidebarItem} className="bg-white rounded-xl border border-brand-border p-6 shadow-sm">
                  <h3 className="font-display font-bold text-lg text-brand-text mb-6">Sede Matriz</h3>
                  
                  <div className="space-y-6">
@@ -239,9 +273,9 @@ export default function Contact() {
                       />
                     </div>
                  </div>
-              </div>
+              </motion.div>
               
-              <div className="bg-white rounded-xl border border-brand-border p-6 shadow-sm flex items-start gap-4">
+              <motion.div variants={sidebarItem} className="bg-white rounded-xl border border-brand-border p-6 shadow-sm flex items-start gap-4">
                 <div className="w-10 h-10 bg-brand-bg rounded flex items-center justify-center shrink-0">
                    <ShieldCheck size={18} className="text-brand-primary" />
                 </div>
@@ -250,8 +284,8 @@ export default function Contact() {
                   <h4 className="font-display font-bold text-brand-text text-sm mb-1">Sin Intermediarios</h4>
                   <p className="font-sans text-xs text-brand-muted leading-relaxed">Movilización de perforadoras de gran diámetro y grúas 24/7 a Costa, Sierra y Amazonía sin intermediarios logísticos.</p>
                 </div>
-              </div>
-           </div>
+              </motion.div>
+           </motion.div>
         </div>
       </section>
     </div>

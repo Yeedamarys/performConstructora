@@ -1,28 +1,32 @@
 import { CheckCircle2, Award, Shield, FileCheck, Hammer, Activity, Target, Eye } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { motion } from 'motion/react';
+import { Counter, EASE_OUT, MaskReveal, Reveal, Stagger, StaggerItem, TiltCard, staggerChild } from '../components/motion';
+import { cld, cldSrcSet } from '../seo/cloudinary';
+
+const ABOUT_PHOTO = 'https://res.cloudinary.com/ddegmlh4o/image/upload/v1788979976/p1f1.png';
 //import nosotrosImage from '../images/nosotros.png';
 
 export default function About() {
   return (
     <div className="bg-brand-bg w-full">
       {/* Header */}
-      <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="inline-flex items-center gap-2 mb-4">
+      <Stagger onMount delay={0.05} className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <StaggerItem className="inline-flex items-center gap-2 mb-4">
           <span className="w-6 h-[2px] bg-brand-primary"></span>
           <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-muted">Ingeniería Estructural Subterránea</span>
-        </div>
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-brand-text mb-6">
+        </StaggerItem>
+        <motion.h1 variants={staggerChild} className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-brand-text mb-6">
           ¿QUIÉNES SOMOS? <span className="text-brand-primary font-semibold text-xl sm:text-2xl lg:text-3xl block sm:inline">— Expertos en Pilotaje y Geotecnia</span>
-        </h1>
-        <p className="text-lg text-brand-muted font-sans max-w-3xl text-justify">
+        </motion.h1>
+        <motion.p variants={staggerChild} className="text-lg text-brand-muted font-sans max-w-3xl text-justify">
           Más de una década ejecutando soluciones de perforación profunda, estabilización de taludes críticos y cimentación especial con rigor analítico y respaldo instrumental en el territorio ecuatoriano.
-        </p>
-      </section>
+        </motion.p>
+      </Stagger>
 
       {/* Main Intro */}
       <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="bg-white rounded-xl border border-brand-border shadow-sm p-8 md:p-12 flex flex-col justify-between">
+          <Reveal className="bg-white rounded-xl border border-brand-border shadow-sm p-8 md:p-12 flex flex-col justify-between">
             <div>
               <div className="flex justify-between items-start mb-6">
                  <span className="text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest">Propósito Fundacional</span>
@@ -31,56 +35,60 @@ export default function About() {
              Perfo Construcciones fue creada para desarrollar y ejecutar proyectos de pilotaje, estabilización de taludes y construcciones de obra civil, satisfaciendo la necesidad de nuestros clientes con soluciones técnicas confiables, innovación y cumplimiento de plazos establecidos. Aportando experiencia y conocimiento técnico que generan confianza, valor y bienestar para nuestros clientes, colaboradores y la comunidad, impulsando el crecimiento del país a través de obras de excelencia.</p>
             </div>
             
-            <div className="grid grid-cols-3 gap-4 border-t border-brand-border pt-8">
-              <div>
+            <Stagger className="grid grid-cols-3 gap-4 border-t border-brand-border pt-8" stagger={0.1}>
+              <StaggerItem>
                 <div className="w-8 h-8 rounded bg-brand-bg flex items-center justify-center text-brand-primary mb-3">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
                 </div>
-                <div className="font-display font-bold text-2xl text-brand-text">350+</div>
+                <div className="font-display font-bold text-2xl text-brand-text"><Counter value={350} suffix="+" /></div>
                 <div className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest mt-1">Sondeos y Pilotes<br/>Ejecutados</div>
-              </div>
-              <div>
+              </StaggerItem>
+              <StaggerItem>
                 <div className="w-8 h-8 rounded bg-brand-bg flex items-center justify-center text-brand-amber mb-3">
                   <Activity size={16} />
                 </div>
-                <div className="font-display font-bold text-2xl text-brand-text">100%</div>
+                <div className="font-display font-bold text-2xl text-brand-text"><Counter value={100} suffix="%" /></div>
                 <div className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest mt-1">Flota Mecánica<br/>Continua</div>
-              </div>
-              <div>
+              </StaggerItem>
+              <StaggerItem>
                 <div className="w-8 h-8 rounded bg-brand-bg flex items-center justify-center text-brand-success mb-3">
                   <Shield size={16} />
                 </div>
                 <div className="font-display font-bold text-2xl text-brand-text">0 NO</div>
                 <div className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest mt-1">Conformidades<br/>Estructurales</div>
-              </div>
-            </div>
-          </div>
+              </StaggerItem>
+            </Stagger>
+          </Reveal>
           
-          <div className="rounded-xl border border-brand-border overflow-hidden relative aspect-square lg:aspect-auto min-h-[320px]">
-             <img
-               src="https://res.cloudinary.com/ddegmlh4o/image/upload/v1788979976/p1f1.png"
-               alt="Equipo de Perfo Construcciones en obra"
-               className="absolute inset-0 h-full w-full object-cover"
-             />
-             
+          <div className="rounded-xl border border-brand-border overflow-hidden relative aspect-square lg:aspect-auto min-h-[320px] bg-gray-200">
+            <MaskReveal delay={0.15} duration={1.2}>
+              <img
+                src={cld(ABOUT_PHOTO, { w: 1200 })}
+                srcSet={cldSrcSet(ABOUT_PHOTO)}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                loading="lazy"
+                alt="Equipo de Perfo Construcciones en obra"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </MaskReveal>
           </div>
         </div>
         
         {/* Sub Banner */}
-        <div className="bg-brand-deep rounded-b-xl px-8 py-4 flex flex-col sm:flex-row justify-between items-center border-t border-brand-border/20 text-white shadow-md">
+        <Reveal y={12} className="bg-brand-deep rounded-b-xl px-8 py-4 flex flex-col sm:flex-row justify-between items-center border-t border-brand-border/20 text-white shadow-md">
            <div className="flex items-center gap-3">
              <Award size={18} className="text-brand-amber" />
              <span className="text-[10px] font-display font-bold uppercase tracking-widest">Estratigrafía Típica de Operación en Suelos Andinos y Costa</span>
            </div>
           
-        </div>
+        </Reveal>
       </section>
 
       
 
       {/* Mission & Vision */}
       <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div className="mb-10">
+        <Reveal className="mb-10">
           <div className="inline-flex items-center gap-2 mb-4">
             <span className="w-2 h-2 bg-brand-primary"></span>
             <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-muted">Identidad Corporativa</span>
@@ -92,11 +100,17 @@ export default function About() {
           <p className="font-sans text-brand-muted mt-4 max-w-2xl text-justify">
             Nuestros principios fundamentales guían cada proyecto que ejecutamos, definiendo quiénes somos hoy y hacia dónde nos proyectamos como empresa líder en construcción especializada.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 [perspective:1600px]">
            {/* Mission */}
-           <div className="bg-white rounded-xl border border-brand-border shadow-sm p-8">
+           <motion.div
+             className="bg-white rounded-xl border border-brand-border shadow-sm p-8 origin-left"
+             initial={{ opacity: 0, x: -36, rotateY: 14 }}
+             whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+             viewport={{ once: true, amount: 0.3 }}
+             transition={{ duration: 0.9, ease: EASE_OUT }}
+           >
              <div className="flex items-start justify-between mb-8">
                <div className="flex items-center gap-4">
                  <div className="w-16 h-16 bg-brand-bg rounded-full overflow-hidden border border-brand-border flex items-center justify-center text-brand-primary">
@@ -130,10 +144,16 @@ export default function About() {
                <span className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest">Grupo Capacitado & Maquinaria Especializada</span>
                <span className="flex items-center gap-1 text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest"><CheckCircle2 size={12} /> Cumplimiento de Plazos</span>
              </div>
-           </div>
+           </motion.div>
 
            {/* Vision */}
-           <div className="bg-white rounded-xl border border-brand-border shadow-sm p-8">
+           <motion.div
+             className="bg-white rounded-xl border border-brand-border shadow-sm p-8 origin-right"
+             initial={{ opacity: 0, x: 36, rotateY: -14 }}
+             whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+             viewport={{ once: true, amount: 0.3 }}
+             transition={{ duration: 0.9, ease: EASE_OUT, delay: 0.1 }}
+           >
              <div className="flex items-start justify-between mb-8">
                <div className="flex items-center gap-4">
                  <div className="w-16 h-16 bg-brand-bg rounded-full overflow-hidden border border-brand-border flex items-center justify-center text-brand-primary">
@@ -167,14 +187,14 @@ export default function About() {
                <span className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest">Liderazgo Nacional en Construcción Especializada</span>
                <span className="flex items-center gap-1 text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest"><CheckCircle2 size={12} /> Crecimiento Sostenible</span>
              </div>
-           </div>
+           </motion.div>
         </div>
       </section>
 
       {/* Advantages */}
       <section className="bg-white border-t border-brand-border py-16">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
+          <Reveal className="mb-12">
             <div className="inline-flex items-center gap-2 mb-4">
               <span className="w-6 h-[2px] bg-brand-primary"></span>
               <span className="font-display font-bold text-xs uppercase tracking-widest text-brand-muted">Diferenciales Técnicos en Terreno</span>
@@ -183,11 +203,12 @@ export default function About() {
             <p className="font-sans text-brand-muted mt-4 max-w-3xl text-justify">
               Nuestra infraestructura elimina intermediarios y asegura que cada ensayo, pilote y perforación responda con precisión matemática ante las auditorías de fiscalización.
             </p>
-          </div>
+          </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-             <div className="bg-brand-bg border border-brand-border rounded-xl p-8 hover:shadow-md transition-shadow">
-               <div className="w-12 h-12 bg-white rounded border border-brand-border flex items-center justify-center text-brand-primary mb-6">
+          <Stagger className="grid grid-cols-1 md:grid-cols-3 gap-8" stagger={0.12}>
+             <StaggerItem className="h-full">
+             <TiltCard className="group h-full bg-brand-bg border border-brand-border rounded-xl p-8">
+               <div className="w-12 h-12 bg-white rounded border border-brand-border flex items-center justify-center text-brand-primary mb-6 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-rotate-6 group-hover:scale-110">
                  <Hammer size={24} />
                </div>
                <div className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest mb-3">Equipamiento Industrial</div>
@@ -201,10 +222,12 @@ export default function About() {
                  <span className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest">Disponibilidad</span>
                  <span className="text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest">100% Flota Activa</span>
                </div>
-             </div>
+             </TiltCard>
+             </StaggerItem>
 
-             <div className="bg-brand-bg border border-brand-border rounded-xl p-8 hover:shadow-md transition-shadow">
-               <div className="w-12 h-12 bg-white rounded border border-brand-border flex items-center justify-center text-brand-primary mb-6">
+             <StaggerItem className="h-full">
+             <TiltCard className="group h-full bg-brand-bg border border-brand-border rounded-xl p-8">
+               <div className="w-12 h-12 bg-white rounded border border-brand-border flex items-center justify-center text-brand-primary mb-6 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-rotate-6 group-hover:scale-110">
                  <Activity size={24} />
                </div>
                <div className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest mb-3">Metodología y Calidad</div>
@@ -218,10 +241,12 @@ export default function About() {
                  <span className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest">Protocolos ASTM</span>
                  <span className="text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest">ASTM D1143 / D5882</span>
                </div>
-             </div>
+             </TiltCard>
+             </StaggerItem>
 
-             <div className="bg-brand-bg border border-brand-border rounded-xl p-8 hover:shadow-md transition-shadow">
-               <div className="w-12 h-12 bg-white rounded border border-brand-border flex items-center justify-center text-brand-primary mb-6">
+             <StaggerItem className="h-full">
+             <TiltCard className="group h-full bg-brand-bg border border-brand-border rounded-xl p-8">
+               <div className="w-12 h-12 bg-white rounded border border-brand-border flex items-center justify-center text-brand-primary mb-6 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-rotate-6 group-hover:scale-110">
                  <Shield size={24} />
                </div>
                <div className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest mb-3">Marco Legal Vinculante</div>
@@ -235,8 +260,9 @@ export default function About() {
                  <span className="text-[10px] font-display font-bold text-brand-muted uppercase tracking-widest">Estándar Vial</span>
                  <span className="text-[10px] font-display font-bold text-brand-primary uppercase tracking-widest">100% Auditable</span>
                </div>
-             </div>
-          </div>
+             </TiltCard>
+             </StaggerItem>
+          </Stagger>
         </div>
       </section>
       

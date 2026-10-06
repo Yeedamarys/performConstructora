@@ -10,6 +10,11 @@ export default defineConfig(() => {
       alias: {
         '@': path.resolve(__dirname, '.'),
       },
+      dedupe: ['react', 'react-dom'],
+    },
+    // The hero 3D scene is lazy-loaded; pre-bundle its deps so dev never re-optimizes mid-session.
+    optimizeDeps: {
+      include: ['three', '@react-three/fiber'],
     },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
