@@ -1,17 +1,31 @@
+import compression from "compression";
 import express from "express";
 import fs from "fs";
 import path from "path";
 import { createServer as createViteServer } from "vite";
-import { renderHead, routeMeta } from "./src/seo/meta";
+import { renderDocument } from "./src/seo/document";
+import type { Manifest } from "./src/seo/preload";
 
-const SEO_BLOCK = /<!--seo:start-->[\s\S]*?<!--seo:end-->/;
+/** HTML carries per-route meta and points at the current hashes: always revalidate. */
+const CACHE_HTML = "no-cache";
 
-/** Put the requested route's title, description, canonical, social and JSON-LD tags in the HTML. */
-function renderPage(template: string, url: string) {
-  const pathname = new URL(url, "http://localhost").pathname;
-  const meta = routeMeta(pathname);
-  const html = template.replace(SEO_BLOCK, `<!--seo:start-->\n    ${renderHead(meta, pathname)}\n    <!--seo:end-->`);
-  return { status: meta.status, html };
+/** Same normalisation as routeMeta(): no trailing slash, lowercase. */
+const normalize = (pathname: string) => pathname.replace(/\/+$/, "").toLowerCase() || "/";
+
+/** Every page scripts/prerender.mjs wrote, keyed by route ("/", "/servicios/x", …) plus "404". */
+function loadPrerendered(dir: string) {
+  const pages = new Map<string, string>();
+  if (!fs.existsSync(dir)) return pages;
+  const walk = (sub: string) => {
+    for (const entry of fs.readdirSync(path.join(dir, sub), { withFileTypes: true })) {
+      const rel = path.posix.join(sub, entry.name);
+      if (entry.isDirectory()) walk(rel);
+      else if (rel === "404.html") pages.set("404", fs.readFileSync(path.join(dir, rel), "utf-8"));
+      else if (entry.name === "index.html") pages.set(normalize(`/${sub}`), fs.readFileSync(path.join(dir, rel), "utf-8"));
+    }
+  };
+  walk("");
+  return pages;
 }
 
 async function startServer() {
@@ -43,7 +57,7 @@ async function startServer() {
       try {
         const raw = fs.readFileSync(path.resolve(process.cwd(), "index.html"), "utf-8");
         const template = await vite.transformIndexHtml(req.originalUrl, raw);
-        const { status, html } = renderPage(template, req.originalUrl);
+        const { status, html } = renderDocument(template, req.originalUrl, null);
         res.status(status).set({ "Content-Type": "text/html" }).end(html);
       } catch (e) {
         vite.ssrFixStacktrace(e as Error);
@@ -52,13 +66,26 @@ async function startServer() {
     });
   } else {
     const distPath = path.join(process.cwd(), "dist");
-    // index: false so "/" also goes through renderPage instead of the raw file.
-    app.use(express.static(distPath, { index: false }));
+    // gzip/brotli for HTML, JS, CSS, JSON, SVG… (images are already compressed and are skipped).
+    app.use(compression());
+    // Hashed bundles: cache for a year. fallthrough: false so a stale hash 404s instead of getting HTML.
+    app.use("/assets", express.static(path.join(distPath, "assets"), { immutable: true, maxAge: "1y", fallthrough: false }));
+    // Icons, robots, sitemap…: unhashed, so a day. index: false so "/" is served by the handler below.
+    // Build internals in dot folders (.prerender, .ssr, .vite) are never served as files; those URLs fall through to the 404 page.
+    app.use(express.static(distPath, { index: false, maxAge: "1d", dotfiles: "ignore" }));
     const template = fs.readFileSync(path.join(distPath, "index.html"), "utf-8");
-    // SPA fallback with real per-route meta and a real 404 status for unknown URLs.
+    const manifestPath = path.join(distPath, ".vite", "manifest.json");
+    const manifest: Manifest | null = fs.existsSync(manifestPath) ? JSON.parse(fs.readFileSync(manifestPath, "utf-8")) : null;
+    const prerendered = loadPrerendered(path.join(distPath, ".prerender"));
     app.get("*", (req, res) => {
-      const { status, html } = renderPage(template, req.originalUrl);
-      res.status(status).type("html").send(html);
+      res.set("Cache-Control", CACHE_HTML).type("html");
+      // Prerendered HTML (content, meta and JSON-LD in the markup) for every sitemap route.
+      const page = prerendered.get(normalize(req.path));
+      if (page) return res.status(200).send(page);
+      // Anything else: per-route meta on the empty shell; unknown URLs get the prerendered 404 page.
+      const { status, html } = renderDocument(template, req.originalUrl, manifest);
+      if (status === 404 && prerendered.has("404")) return res.status(404).send(prerendered.get("404"));
+      res.status(status).send(html);
     });
   }
 

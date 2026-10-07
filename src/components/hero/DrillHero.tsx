@@ -1,8 +1,8 @@
-import { Suspense, lazy, useEffect, useRef, useState, type MutableRefObject, type ReactNode, type RefObject } from 'react';
-import { motion, useInView, useMotionValueEvent, useReducedMotion, useScroll } from 'motion/react';
+import { Suspense, lazy, useEffect, useRef, useState, useSyncExternalStore, type MutableRefObject, type ReactNode, type RefObject } from 'react';
+import { motion, useInView, useMotionValueEvent, useScroll } from 'motion/react';
 import { ChevronsDown } from 'lucide-react';
-import { EASE_MASK, MaskReveal } from '../motion';
-import { BLOCK_DEPTH, DEPTH_TICKS, MAX_DEPTH, STRATA } from './strata';
+import { EASE_MASK, MaskReveal, useReducedMotionSafe } from '../motion';
+import { DEPTH_TICKS, MAX_DEPTH, STRATA } from './strata';
 import type { SceneLabels } from './HeroScene';
 import { cld, cldSrcSet } from '../../seo/cloudinary';
 
@@ -13,8 +13,23 @@ const HERO_PHOTO = 'https://res.cloudinary.com/ddegmlh4o/image/upload/v178897997
 type Nav = Navigator & { deviceMemory?: number; connection?: { saveData?: boolean } };
 
 /** Decide once, on the client, whether this device gets the live scene. */
-function detectCapability() {
-  if (typeof window === 'undefined') return { webgl: false, lowEnd: true, coarse: false };
+type Capability = { webgl: boolean; lowEnd: boolean; coarse: boolean };
+
+/** What the prerendered HTML assumes: the static photo hero. */
+const SERVER_CAPABILITY: Capability = { webgl: false, lowEnd: true, coarse: false };
+let clientCapability: Capability | undefined;
+const noSubscribe = () => () => {};
+
+/**
+ * Hydrates with the server's answer (photo), then re-renders with the device's real one, so a
+ * capable device swaps to the live scene after hydration instead of failing to hydrate.
+ */
+function useCapability() {
+  return useSyncExternalStore(noSubscribe, () => (clientCapability ??= detectCapability()), () => SERVER_CAPABILITY);
+}
+
+function detectCapability(): Capability {
+  if (typeof window === 'undefined') return SERVER_CAPABILITY;
   const nav = navigator as Nav;
   const coarse = matchMedia('(pointer: coarse)').matches;
   const lowEnd =
@@ -55,27 +70,57 @@ function useHeaderHeight() {
   return h;
 }
 
-/** Flat strata bands: the loading state, drawn from the same profile as the 3D block. */
-function StrataPoster({ hidden }: { hidden: boolean }) {
+/**
+ * True once the 3D scene may download: after the page has loaded and the browser is idle,
+ * or as soon as the visitor scrolls or touches the page. Until then the photo is the hero
+ * (and the LCP), so the ~250 KB gzip scene never competes with the first paint.
+ */
+function useDeferredScene() {
+  const [go, setGo] = useState(false);
+  useEffect(() => {
+    if (go) return;
+    let cancelIdle = () => {};
+    const start = () => setGo(true);
+    // Safari has no requestIdleCallback; a short timeout after load is close enough.
+    const whenIdle = () => {
+      if (typeof requestIdleCallback === 'function') {
+        const id = requestIdleCallback(start, { timeout: 4000 });
+        cancelIdle = () => cancelIdleCallback(id);
+      } else {
+        const id = setTimeout(start, 2000);
+        cancelIdle = () => clearTimeout(id);
+      }
+    };
+    const events = ['scroll', 'pointerdown', 'keydown', 'touchstart'] as const;
+    events.forEach((e) => window.addEventListener(e, start, { once: true, passive: true }));
+    if (document.readyState === 'complete') whenIdle();
+    else window.addEventListener('load', whenIdle, { once: true });
+    return () => {
+      events.forEach((e) => window.removeEventListener(e, start));
+      window.removeEventListener('load', whenIdle);
+      cancelIdle();
+    };
+  }, [go]);
+  return go;
+}
+
+/** The site photo stands in for the scene until it is ready, then fades out. */
+function HeroPoster({ hidden }: { hidden: boolean }) {
   return (
-    <div
-      aria-hidden="true"
-      className={`absolute inset-x-0 bottom-0 top-[22%] flex flex-col transition-opacity duration-700 ${hidden ? 'opacity-0' : 'opacity-100'}`}
-    >
-      {STRATA.map((s) => (
-        <div
-          key={s.name}
-          style={{ flexGrow: Math.min(s.to, BLOCK_DEPTH) - s.from, background: s.color }}
-          className="border-t border-black/10"
-        />
-      ))}
-    </div>
+    <img
+      src={cld(HERO_PHOTO, { w: 1200 })}
+      srcSet={cldSrcSet(HERO_PHOTO)}
+      sizes="(min-width: 1024px) 50vw, 100vw"
+      alt=""
+      fetchPriority="high"
+      className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${hidden ? 'opacity-0' : 'opacity-100'}`}
+    />
   );
 }
 
 function StaticVisual() {
   return (
-    <div className="relative">
+    <div className="relative frame-marks text-brand-primary/50">
       <motion.div
         className="aspect-[4/3] rounded-xl bg-gray-200 border border-brand-border shadow-[0_16px_32px_rgba(43,47,51,0.08)] overflow-hidden relative"
         initial={{ opacity: 0 }}
@@ -110,6 +155,7 @@ function LiveVisual({ depthTarget, coarse, sceneRef }: {
   const labels = useRef<SceneLabels>({ ticks: [], names: [], tip: null, readout: null });
   const [ready, setReady] = useState(false);
   const [hintGone, setHintGone] = useState(false);
+  const loadScene = useDeferredScene();
   const inView = useInView(sceneRef, { margin: '120px 0px' });
   const [pageVisible, setPageVisible] = useState(true);
 
@@ -131,22 +177,24 @@ function LiveVisual({ depthTarget, coarse, sceneRef }: {
       aria-label={`Ilustración: perfil de suelo con una hélice de pilotaje que perfora hasta ${MAX_DEPTH} m de profundidad`}
       className="relative h-full w-full overflow-hidden rounded-xl border border-brand-border bg-[linear-gradient(180deg,#e6eef3_0%,#f2f6fa_22%,#f7f9ff_100%)] shadow-[0_16px_32px_rgba(43,47,51,0.08)]"
     >
-      <StrataPoster hidden={ready} />
+      <HeroPoster hidden={ready} />
       <motion.div
         className="absolute inset-0"
         initial={{ opacity: 0 }}
         animate={{ opacity: ready ? 1 : 0 }}
         transition={{ duration: 0.8 }}
       >
-        <Suspense fallback={null}>
-          <HeroScene
-            depthTarget={depthTarget}
-            labels={labels}
-            active={inView && pageVisible}
-            lowPower={coarse}
-            onReady={() => setReady(true)}
-          />
-        </Suspense>
+        {loadScene ? (
+          <Suspense fallback={null}>
+            <HeroScene
+              depthTarget={depthTarget}
+              labels={labels}
+              active={inView && pageVisible}
+              lowPower={coarse}
+              onReady={() => setReady(true)}
+            />
+          </Suspense>
+        ) : null}
       </motion.div>
 
       {/* Depth ruler, strata names and the live readout are DOM, pinned to the scene each frame */}
@@ -188,7 +236,7 @@ function LiveVisual({ depthTarget, coarse, sceneRef }: {
         </div>
       </div>
 
-      <span className="pointer-events-none absolute left-3 bottom-3 rounded bg-white/85 px-2 py-1 font-display text-[10px] font-bold uppercase tracking-widest text-brand-muted">
+      <span className={`pointer-events-none absolute left-3 bottom-3 transition-opacity duration-700 ${ready ? 'opacity-100' : 'opacity-0'} rounded bg-white/85 px-2 py-1 font-display text-[10px] font-bold uppercase tracking-widest text-brand-muted`}>
         Perfil ilustrativo · máx. {MAX_DEPTH} m
       </span>
       <span
@@ -207,8 +255,8 @@ function LiveVisual({ depthTarget, coarse, sceneRef }: {
  * devices and no-WebGL get the original photo.
  */
 export default function DrillHero({ children }: { children: ReactNode }) {
-  const reduce = useReducedMotion();
-  const [cap] = useState(detectCapability);
+  const reduce = useReducedMotionSafe();
+  const cap = useCapability();
   const live = !reduce && cap.webgl && !cap.lowEnd;
   const desktop = useMedia('(min-width: 1024px)');
   const headerH = useHeaderHeight();
@@ -247,7 +295,7 @@ export default function DrillHero({ children }: { children: ReactNode }) {
         <div className="max-w-[1440px] h-full mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-8">
           <div className="grid h-full grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {children}
-            <div className="relative lg:col-span-5 xl:col-span-6 mt-8 lg:mt-0 aspect-[4/5] sm:aspect-[4/3] lg:aspect-auto lg:h-full lg:max-h-[760px]">
+            <div className="relative frame-marks text-brand-primary/50 lg:col-span-5 xl:col-span-6 mt-8 lg:mt-0 aspect-[4/5] sm:aspect-[4/3] lg:aspect-auto lg:h-full lg:max-h-[760px]">
               <LiveVisual depthTarget={depthTarget} coarse={cap.coarse} sceneRef={sceneRef} />
             </div>
           </div>

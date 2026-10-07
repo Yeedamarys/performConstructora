@@ -70,7 +70,7 @@ export default function ProjectDetail() {
                           layout
                           src={cld(img.src, { w: 1200 })}
                           srcSet={cldSrcSet(img.src)}
-                          sizes={project.images.length > 1 ? '(min-width: 640px) 50vw, 100vw' : '100vw'}
+                          sizes={project.images.length > 1 ? '(min-width: 1088px) 504px, (min-width: 640px) 50vw, 100vw' : '(min-width: 1088px) 1024px, 100vw'}
                           alt={img.alt}
                           fetchPriority={k === 0 ? 'high' : undefined}
                           onLoad={(e) => {

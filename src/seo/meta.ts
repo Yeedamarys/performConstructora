@@ -8,7 +8,7 @@ import { servicesData } from '../data/services';
 import { cld } from './cloudinary';
 
 export const SITE_URL = 'https://perforconstrucciones.com';
-export const BRAND = 'Perfo Construcciones';
+export const BRAND = 'Perfor Construcciones';
 export const ORG_ID = `${SITE_URL}/#organization`;
 const DEFAULT_IMAGE = `${SITE_URL}/logo-mark.png`;
 const MAX_TITLE = 60;
@@ -71,7 +71,7 @@ const STATIC: Record<string, { title: string; description: string; crumb?: strin
   '/nosotros': {
     title: withBrand('Nosotros: Geotecnia y Obra Civil'),
     description:
-      'Perfo Construcciones: empresa quiteña especializada en pilotaje, estabilización de taludes y obra civil. Conoce nuestra misión, visión y ventajas competitivas.',
+      'Perfor Construcciones: empresa quiteña especializada en pilotaje, estabilización de taludes y obra civil. Conoce nuestra misión, visión y ventajas competitivas.',
     crumb: 'Nosotros',
   },
   '/contacto': {
@@ -116,12 +116,26 @@ export function routeMeta(pathname: string): RouteMeta {
           '@context': 'https://schema.org',
           '@type': 'Service',
           name: service.title,
+          alternateName: service.aka,
           serviceType: service.category,
-          description: service.seo.description,
+          description: service.summary,
           url: `${SITE_URL}${path}`,
           image: cld(service.image, { w: 1200 }),
           provider: { '@id': ORG_ID },
-          areaServed: { '@type': 'Country', name: 'Ecuador' },
+          areaServed: [
+            { '@type': 'City', name: 'Quito' },
+            { '@type': 'Country', name: 'Ecuador' },
+          ],
+        },
+        // Same questions and answers the page shows (ServiceDetail.tsx).
+        {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: service.faqs.map(({ q, a }) => ({
+            '@type': 'Question',
+            name: q,
+            acceptedAnswer: { '@type': 'Answer', text: a },
+          })),
         },
         breadcrumbs([['Inicio', '/'], ['Servicios', '/servicios'], [service.title, path]]),
       ],

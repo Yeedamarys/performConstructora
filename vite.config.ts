@@ -12,6 +12,10 @@ export default defineConfig(() => {
       },
       dedupe: ['react', 'react-dom'],
     },
+    // dist/.vite/manifest.json lets server.ts modulepreload the requested route's chunk.
+    build: {
+      manifest: true,
+    },
     // The hero 3D scene is lazy-loaded; pre-bundle its deps so dev never re-optimizes mid-session.
     optimizeDeps: {
       include: ['three', '@react-three/fiber'],

@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
-  Activity, ArrowRight, ChevronDown, ChevronRight, Layers, MessageCircle, Phone, ShieldCheck, User, Wrench,
+  Activity, ArrowRight, ChevronDown, ChevronRight, Drill, Layers, MessageCircle, Phone, ShieldCheck, User, Wrench,
   type LucideIcon,
 } from 'lucide-react';
 import { serviceHref, servicesData, thumb } from '../data/services';
 import { AnimatePresence, motion } from 'motion/react';
 import { EASE_OUT } from './motion';
-const logoMark = '/logo-mark.png';
+// Trimmed mark at 3x its largest rendered width (96 px); /logo-mark.png is the square icon for search and social.
+const logoMark = '/logo-nav.webp';
 
 const menuItem = {
   hidden: { opacity: 0, y: 14 },
@@ -35,12 +36,14 @@ export default function Navbar() {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 min-h-[5.75rem] md:min-h-[6.75rem] py-2.5 flex items-center justify-between gap-4">
         <Link
           to="/"
-          aria-label="Perfo Construcciones"
+          aria-label="Perfor Construcciones"
         >
           <div className="flex h-[3.5rem] w-[5.125rem] shrink-0 items-center sm:h-[4.125rem] sm:w-[5.875rem] md:h-[4.25rem] md:w-[6rem]">
             <img
               src={logoMark}
-              alt="Perfo Construcciones"
+              width={288}
+              height={195}
+              alt="Perfor Construcciones"
               className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.03]"
             />
           </div>
@@ -204,6 +207,7 @@ const serviceIcons: Record<string, LucideIcon> = {
   'hincado-vibrohincado-pilotes': Wrench,
   'anclajes-muros-pantalla': ShieldCheck,
   'estabilizacion-taludes': Activity,
+  'perforacion-suelo-roca': Drill,
 };
 
 /** Desktop "Servicios": a click-to-open menu that drops from its trigger. */

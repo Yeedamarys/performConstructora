@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: sans-serif;
-  --font-sans: sans-serif;
+  /* Self-hosted (main.tsx): Archivo for display, Plex Sans for reading, Plex Mono only for measurements and data. */
+  --font-display: 'Archivo Variable', 'Arial Narrow', sans-serif;
+  --font-sans: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
   --color-brand-primary: #006781;
   --color-brand-deep: #004d62;
@@ -47,6 +49,58 @@
 /* Motion system: one confident curve, physical press feedback */
 @theme {
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- Technical-drawing frame system ----------
+   Registration marks, measuring rules and a drafting grid: the page reads like a sheet from a
+   geotechnical set, so precision is carried by the surface instead of by decoration. */
+
+/* Four L-shaped corner marks just outside an element. Colour follows `color`. */
+.frame-marks {
+  position: relative;
+}
+.frame-marks::after {
+  content: '';
+  position: absolute;
+  inset: -0.5rem;
+  pointer-events: none;
+  --m: 0.875rem;
+  --t: 1.5px;
+  background:
+    linear-gradient(currentColor, currentColor) top left / var(--m) var(--t),
+    linear-gradient(currentColor, currentColor) top left / var(--t) var(--m),
+    linear-gradient(currentColor, currentColor) top right / var(--m) var(--t),
+    linear-gradient(currentColor, currentColor) top right / var(--t) var(--m),
+    linear-gradient(currentColor, currentColor) bottom left / var(--m) var(--t),
+    linear-gradient(currentColor, currentColor) bottom left / var(--t) var(--m),
+    linear-gradient(currentColor, currentColor) bottom right / var(--m) var(--t),
+    linear-gradient(currentColor, currentColor) bottom right / var(--t) var(--m);
+  background-repeat: no-repeat;
+}
+
+/* A measuring rule: hairline with minor ticks every 8px and a major tick every 64px. */
+.measure-rule {
+  height: 0.75rem;
+  background:
+    linear-gradient(currentColor, currentColor) bottom / 100% 1px no-repeat,
+    repeating-linear-gradient(to right, currentColor 0 1px, transparent 1px 64px) bottom / 100% 0.75rem no-repeat,
+    repeating-linear-gradient(to right, currentColor 0 1px, transparent 1px 8px) bottom / 100% 0.375rem no-repeat;
+}
+
+/* Faint drafting grid for section surfaces. The fade is a background layer painted over the lines
+   (--grid-fade), not a mask-image: a mask over a tall section cost ~500 ms of layout on a throttled phone. */
+.drafting-grid {
+  background-image:
+    var(--grid-fade, linear-gradient(transparent, transparent)),
+    linear-gradient(color-mix(in srgb, var(--color-brand-primary) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-brand-primary) 7%, transparent) 1px, transparent 1px);
+  background-size: 100% 100%, 48px 48px, 48px 48px;
+  background-position: 0 0, -1px -1px, -1px -1px;
+}
+
+/* Balanced headings only: text-wrap on every paragraph measurably slowed first layout. */
+h1, h2 {
+  text-wrap: balance;
 }
 
 ::selection {

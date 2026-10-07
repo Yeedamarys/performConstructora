@@ -1,16 +1,34 @@
-import { createContext, useContext, useEffect, useRef, useState, type PointerEvent, type ReactNode } from 'react';
+import { createContext, useContext, useEffect, useRef, useState, useSyncExternalStore, type PointerEvent, type ReactNode } from 'react';
 import {
   animate,
   motion,
   useInView,
   useMotionTemplate,
   useMotionValue,
-  useReducedMotion,
   useSpring,
   useTransform,
   type MotionValue,
   type Variants,
 } from 'motion/react';
+
+const REDUCED_MOTION = '(prefers-reduced-motion: reduce)';
+
+/**
+ * prefers-reduced-motion that is safe to hydrate. motion's useReducedMotion reads the device on the
+ * client's first render, which differs from the prerendered HTML; this one hydrates with the server's
+ * answer (no preference) and re-renders with the real one right after.
+ */
+export function useReducedMotionSafe() {
+  return useSyncExternalStore(
+    (onChange) => {
+      const m = matchMedia(REDUCED_MOTION);
+      m.addEventListener('change', onChange);
+      return () => m.removeEventListener('change', onChange);
+    },
+    () => matchMedia(REDUCED_MOTION).matches,
+    () => false,
+  );
+}
 
 /** Confident deceleration used across the site. */
 export const EASE_OUT = [0.16, 1, 0.3, 1] as const;
@@ -174,7 +192,7 @@ export function Counter({
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.6 });
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionSafe();
   const format = (n: number) => `${prefix}${n.toFixed(decimals)}${suffix}`;
   const [text, setText] = useState(() => format(reduce ? value : 0));
 
@@ -219,7 +237,7 @@ export function TiltCard({
   className?: string;
   max?: number;
 }) {
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionSafe();
   const px = useMotionValue(0); // -0.5 … 0.5
   const py = useMotionValue(0);
   const sx = useSpring(px, TILT_SPRING);

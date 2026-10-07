@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { Stagger, StaggerItem } from './motion';
 import { serviceHref } from '../data/services';
 const services = [
-  { label: 'Pilotaje Prebarrenado CFA', slug: 'pilotaje-barrenado' },
-  { label: 'Hincado y vibrohincado de pilotes y tablaestacas', slug: 'hincado-vibrohincado-pilotes' },
-  { label: 'Anclajes para muros pantalla de hormigón', slug: 'anclajes-muros-pantalla' },
+  { label: 'Pilotaje barrenado y prebarrenado CFA', slug: 'pilotaje-barrenado' },
+  { label: 'Hincado y vibrohincado de pilotes y tablestacas', slug: 'hincado-vibrohincado-pilotes' },
+  { label: 'Anclajes para muros pantalla e inyección de lechada', slug: 'anclajes-muros-pantalla' },
   { label: 'Estabilización de taludes', slug: 'estabilizacion-taludes' },
+  { label: 'Perforación en suelo y roca', slug: 'perforacion-suelo-roca' },
 ];
 
 export default function Footer() {
@@ -29,7 +30,7 @@ export default function Footer() {
           </StaggerItem>
 
           <StaggerItem className="lg:col-span-4">
-            <h4 className="font-display font-bold text-brand-text">Servicios especializados</h4>
+            <h2 className="font-display font-bold text-base text-brand-text">Servicios especializados</h2>
             <ul className="mt-5 space-y-3 text-sm text-brand-muted">
               {services.map((service) => (
                 <li key={service.slug} className="flex items-start justify-center gap-2 text-left md:justify-start">
@@ -46,7 +47,7 @@ export default function Footer() {
           </StaggerItem>
 
           <StaggerItem className="lg:col-span-3">
-            <h4 className="font-display font-bold text-brand-text">Sede matriz · Quito</h4>
+            <h2 className="font-display font-bold text-base text-brand-text">Sede matriz · Quito</h2>
             <address className="mt-5 space-y-4 text-sm not-italic text-brand-muted">
               <p className="flex items-start justify-center gap-3 text-left md:justify-start">
                 <MapPin size={18} className="mt-0.5 shrink-0 text-brand-primary" />

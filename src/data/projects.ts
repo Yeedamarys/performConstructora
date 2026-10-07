@@ -1,3 +1,5 @@
+import { devProjects } from './projects.fixtures';
+
 const getImg = (name: string) => `https://res.cloudinary.com/ddegmlh4o/image/upload/f_auto,q_auto/${name}`;
 
 export interface ProjectImage {
@@ -26,10 +28,10 @@ export interface Project {
   images: ProjectImage[];
 }
 
-export const projectsData: Project[] = [
+const realProjects: Project[] = [
   {
     slug: "anclaje-talud-museo-yaku",
-    title: "Anclaje en Talud — Museo Yaku, Quito | Perfo Construcciones",
+    title: "Anclaje en Talud — Museo Yaku, Quito | Perfor Construcciones",
     h1: "Perforación de Anclaje en Talud — Museo Yaku",
     service: "Anclajes en talud",
     client: "Ing. Eduardo Lazcano",
@@ -42,7 +44,7 @@ export const projectsData: Project[] = [
   },
   {
     slug: "puente-rio-monjas-pomasqui",
-    title: "Pilotaje para Puente sobre el Río Monjas, Pomasqui | Perfo Construcciones",
+    title: "Pilotaje para Puente sobre el Río Monjas, Pomasqui | Perfor Construcciones",
     h1: "Puente Vehicular sobre el Río Monjas — Sector Pomasqui",
     service: "Pilotaje Ø 0.80 m",
     client: "Ing. Luis Urgiles",
@@ -56,7 +58,7 @@ export const projectsData: Project[] = [
   },
   {
     slug: "mitigacion-riesgo-rio-monjas-orquideas",
-    title: "Estabilización de Taludes — Mitigación de Riesgo Río Monjas | Perfo Construcciones",
+    title: "Estabilización de Taludes — Mitigación de Riesgo Río Monjas | Perfor Construcciones",
     h1: "Mitigación de Riesgo Río Monjas — Proyecto Orquídeas",
     service: "Estabilización de taludes",
     client: "Consorcio Gaviones Quito",
@@ -71,7 +73,7 @@ export const projectsData: Project[] = [
   },
   {
     slug: "proteccion-rio-machangara",
-    title: "Anclajes y Geomanto — Protección del Río Machángara | Perfo Construcciones",
+    title: "Anclajes y Geomanto — Protección del Río Machángara | Perfor Construcciones",
     h1: "Protección del Río Machángara — Anclajes y Malla Triple Torsión",
     service: "Anclajes y geomanto",
     client: "Ing. Francisco Vaca",
@@ -85,7 +87,7 @@ export const projectsData: Project[] = [
   },
   {
     slug: "micropilotaje-hospital-loja",
-    title: "Micropilotaje para Hospital Privado en Loja | Perfo Construcciones",
+    title: "Micropilotaje para Hospital Privado en Loja | Perfor Construcciones",
     h1: "Micropilotaje — Construcción Hospital Privado, Loja",
     service: "Micropilotaje Ø 0.38 m",
     client: "Ing. Salomón Rosero",
@@ -99,7 +101,7 @@ export const projectsData: Project[] = [
   },
   {
     slug: "tuberia-hincada-rio-monjas-la-pampa",
-    title: "Tubería Hincada — Protección de Talud Río Monjas, La Pampa | Perfo Construcciones",
+    title: "Tubería Hincada — Protección de Talud Río Monjas, La Pampa | Perfor Construcciones",
     h1: "Protección del Talud en Río Monjas — Sector La Pampa",
     service: "Tubería hincada Ø 0.30 m",
     client: "Ing. Francisco Vaca",
@@ -113,7 +115,7 @@ export const projectsData: Project[] = [
   },
   {
     slug: "puente-majua-viche",
-    title: "Tubería Hincada — Puente Vehicular de Majúa, Viche | Perfo Construcciones",
+    title: "Tubería Hincada — Puente Vehicular de Majúa, Viche | Perfor Construcciones",
     h1: "Puente Vehicular de Majúa — Cantón Viche",
     service: "Tubería hincada Ø 0.30 m",
     client: "Ing. Abigail Cedeño",
@@ -127,7 +129,7 @@ export const projectsData: Project[] = [
   },
   {
     slug: "cimentacion-acua-shops",
-    title: "Pilotaje para Cimentación — Proyecto Acua Shops | Perfo Construcciones",
+    title: "Pilotaje para Cimentación — Proyecto Acua Shops | Perfor Construcciones",
     h1: "Cimentación para el Proyecto Acua Shops",
     service: "Pilotaje Ø 0.80 m",
     client: "IFCE Cimentaciones Ecuador",
@@ -140,3 +142,11 @@ export const projectsData: Project[] = [
     ]
   }
 ];
+
+// Dev only: ?data=worst|empty|one|many swaps in stress fixtures (DevDataToggle). Production builds drop the branch and the fixtures module.
+// import.meta.env only exists under Vite; server.ts (tsx / esbuild CJS) gets the real data.
+const DEV = typeof import.meta.env !== 'undefined' && import.meta.env.DEV;
+export const projectsData: Project[] = DEV ? devProjects(realProjects) : realProjects;
+
+/** Display name: the title without the trailing " | Perfor Construcciones" (a "|" inside the name survives). */
+export const projectName = (p: Pick<Project, 'title'>) => p.title.replace(/\s*\|\s*Perfor Construcciones\s*$/, '');

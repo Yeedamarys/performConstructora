@@ -2,7 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import NotFound from './NotFound';
 import { motion } from 'motion/react';
 import { ArrowLeft, ArrowRight, ChevronRight, MessageCircle, ShieldCheck } from 'lucide-react';
-import { serviceHref, servicesData, thumb } from '../data/services';
+import { CONTENT_UPDATED, serviceHref, servicesData, thumb } from '../data/services';
 import { projectsData } from '../data/projects';
 import { cld, cldSrcSet } from '../seo/cloudinary';
 import { EASE_MASK, EASE_OUT, MaskReveal, Reveal, Stagger, StaggerItem, TiltCard, TiltLayer, staggerChild } from '../components/motion';
@@ -15,6 +15,9 @@ const specItem = {
   hidden: { opacity: 0, x: -16 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: EASE_OUT } },
 };
+
+/** "octubre de 2026"; UTC so the prerendered text and the hydrated text always agree. */
+const updatedLabel = new Date(`${CONTENT_UPDATED}T12:00:00Z`).toLocaleDateString('es-EC', { month: 'long', year: 'numeric', timeZone: 'UTC' });
 
 /** Related-project cards turn up into place like the gallery cards. */
 const turnUp = {
@@ -60,6 +63,10 @@ export default function ServiceDetail() {
           <motion.h1 variants={staggerChild} className="max-w-4xl text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-brand-text leading-[1.1]">
             {service.title}
           </motion.h1>
+          {/* The definition answer: first paragraph on the page, readable on its own */}
+          <motion.p variants={staggerChild} className="mt-6 max-w-3xl font-sans text-lg leading-relaxed text-brand-muted">
+            {service.summary}
+          </motion.p>
         </Stagger>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
@@ -116,6 +123,36 @@ export default function ServiceDetail() {
         </div>
       </section>
 
+      {/* When to use it and how it is executed */}
+      <section className="bg-white border-t border-brand-border py-16 lg:py-20">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <Reveal>
+            <h2 className="text-2xl md:text-3xl font-display font-bold text-brand-text mb-6">¿Cuándo se usa?</h2>
+            <ul className="space-y-4">
+              {service.uses.map((use) => (
+                <li key={use} className="flex items-start gap-3 font-sans text-brand-text leading-relaxed">
+                  <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-primary" />
+                  {use}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <h2 className="text-2xl md:text-3xl font-display font-bold text-brand-text mb-6">Cómo lo ejecutamos</h2>
+            <ol className="space-y-4">
+              {service.process.map((step, i) => (
+                <li key={step} className="flex items-start gap-4 font-sans text-brand-text leading-relaxed">
+                  <span aria-hidden="true" className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-bg border border-brand-border font-display text-sm font-bold text-brand-primary tabular-nums">
+                    {i + 1}
+                  </span>
+                  <span className="pt-0.5">{step}</span>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Projects that used this service */}
       {related.length > 0 && (
         <section className="bg-white border-t border-brand-border py-16 lg:py-20">
@@ -141,6 +178,8 @@ export default function ServiceDetail() {
                           <TiltLayer depth={-7} className="absolute -inset-3">
                             <img
                               src={cld(p.images[0].src, { w: 800 })}
+                              srcSet={cldSrcSet(p.images[0].src, [480, 640, 800])}
+                              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                               alt={p.images[0].alt}
                               loading="lazy"
                               className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
@@ -166,6 +205,28 @@ export default function ServiceDetail() {
           </div>
         </section>
       )}
+
+      {/* FAQ: always visible (no accordion) so every answer is in the HTML; mirrored as FAQPage JSON-LD in src/seo/meta.ts */}
+      <section className="border-t border-brand-border py-16 lg:py-20">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <Reveal>
+              <h2 className="text-2xl md:text-3xl font-display font-bold text-brand-text">Preguntas frecuentes</h2>
+            </Reveal>
+            <div className="mt-8 divide-y divide-brand-border border-y border-brand-border">
+              {service.faqs.map((faq) => (
+                <Reveal key={faq.q} className="py-6">
+                  <h3 className="font-display font-bold text-lg text-brand-text">{faq.q}</h3>
+                  <p className="mt-2 font-sans text-brand-muted leading-relaxed">{faq.a}</p>
+                </Reveal>
+              ))}
+            </div>
+            <p className="mt-6 font-sans text-sm text-brand-muted">
+              Contenido revisado: <time dateTime={CONTENT_UPDATED}>{updatedLabel}</time>
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Other services */}
       <section className="border-t border-brand-border py-16">

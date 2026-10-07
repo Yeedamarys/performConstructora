@@ -1,9 +1,9 @@
 {
-  "name": "Perfo Construcciones",
-  "short_name": "Perfo",
+  "name": "Perfor Construcciones",
+  "short_name": "Perfor",
   "icons": [
     {
-      "src": "/logo-mark.png",
+      "src": "/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
